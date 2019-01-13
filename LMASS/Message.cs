@@ -18,6 +18,7 @@ namespace LMASS
     {
         public  ArrayList AllFields = new ArrayList();//все до поля
         public ArrayList Mails = new ArrayList();//адреса категории
+        public string[] fileNames;// вложения
         //подключение к БД
         SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
               
@@ -114,10 +115,12 @@ namespace LMASS
         //загрузка вложения
         private void button6_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                AttachFile = dialog.FileName;
+            //OpenFileDialog dialog = new OpenFileDialog();
+            //this.openFileDialog1.Multiselect = true;
+         
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                fileNames = openFileDialog1.FileNames;
+            //AttachFile = openFileDialog1.FileName;
         }
 
         //отправка
@@ -180,9 +183,13 @@ namespace LMASS
                         }
                         
                         to = new MailAddress(Mails[adr].ToString());
-                        m = new MailMessage(from, to);                        
-                        if (AttachFile.Length > 0)//вложение, если есть
-                            m.Attachments.Add(new Attachment(AttachFile));
+                        m = new MailMessage(from, to);
+                        if (fileNames.Length > 0)//вложение, если есть
+                            for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                            {
+                                AttachFile = fileNames[f];
+                                m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                            }
                         m.Subject = textBox1.Text;   // тема письма                        
                         m.Body = "<h2>" + letter + "</h2>";// текст письма                        
                         m.IsBodyHtml = true;// письмо представляет код html                       
