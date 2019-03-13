@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryListDataSet = new LMASS.CategoryListDataSet();
-            this.categoryTableAdapter = new LMASS.CategoryListDataSetTableAdapters.CategoryTableAdapter();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryListDataSet = new LMASS.CategoryListDataSet();
+            this.categoryTableAdapter = new LMASS.CategoryListDataSetTableAdapters.CategoryTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryListDataSet)).BeginInit();
@@ -44,6 +44,8 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button1.Location = new System.Drawing.Point(109, 330);
             this.button1.Name = "button1";
@@ -57,6 +59,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -70,20 +74,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(278, 321);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataMember = "Category";
-            this.categoryBindingSource.DataSource = this.categoryListDataSet;
-            // 
-            // categoryListDataSet
-            // 
-            this.categoryListDataSet.DataSetName = "CategoryListDataSet";
-            this.categoryListDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoryTableAdapter
-            // 
-            this.categoryTableAdapter.ClearBeforeFill = true;
             // 
             // ID
             // 
@@ -106,6 +96,20 @@
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.Width = 30;
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.categoryListDataSet;
+            // 
+            // categoryListDataSet
+            // 
+            this.categoryListDataSet.DataSetName = "CategoryListDataSet";
+            this.categoryListDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryTableAdapter
+            // 
+            this.categoryTableAdapter.ClearBeforeFill = true;
             // 
             // CategoryList
             // 

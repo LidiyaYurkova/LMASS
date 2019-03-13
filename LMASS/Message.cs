@@ -46,7 +46,7 @@ namespace LMASS
             
 
         }
-        //при закрытии сфомы списка категорий
+        //при закрытии фомы списка категорий
         private void CategoryListClosing(object sender, EventArgs e)
         {
             if (CategoryList.CurrentCategoriesID.Count > 0)
@@ -76,7 +76,7 @@ namespace LMASS
             dialog.Filter = "Text files | *.txt";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 richTextBox1.LoadFile(dialog.FileName, RichTextBoxStreamType.PlainText);
-
+     
         }
 
         //сохранение шаблона
@@ -115,12 +115,11 @@ namespace LMASS
         //загрузка вложения
         private void button6_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog dialog = new OpenFileDialog();
-            //this.openFileDialog1.Multiselect = true;
-         
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
                 fileNames = openFileDialog1.FileNames;
-            //AttachFile = openFileDialog1.FileName;
+                label1.Text += "Выбрано файлов: "+ fileNames.Length;
+            }
         }
 
         //отправка
@@ -142,9 +141,7 @@ namespace LMASS
             string htmlLetter = richTextBox1.Text;
             htmlLetter = htmlLetter.Replace("\n", "<br>");
 
-            //для выборки
-           // string Mail=" ";
-                                  
+                                            
             if (checkBox1.Checked == false) //если не выбрали категорию
             {
                 MessageBox.Show("Выберите категорию!","Ошибка");
@@ -184,7 +181,8 @@ namespace LMASS
                         
                         to = new MailAddress(Mails[adr].ToString());
                         m = new MailMessage(from, to);
-                        if (fileNames.Length > 0)//вложение, если есть
+
+                        if (fileNames != null)//вложение, если есть
                             for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
                             {
                                 AttachFile = fileNames[f];
