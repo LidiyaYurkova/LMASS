@@ -283,8 +283,6 @@ namespace LMASS {
             
             private global::System.Data.DataColumn columnFIO;
             
-            private global::System.Data.DataColumn columnMail;
-            
             private global::System.Data.DataColumn columnCategoryID;
             
             private global::System.Data.DataColumn columnp1;
@@ -306,6 +304,8 @@ namespace LMASS {
             private global::System.Data.DataColumn columnp9;
             
             private global::System.Data.DataColumn columnp10;
+            
+            private global::System.Data.DataColumn columnEmail;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -353,14 +353,6 @@ namespace LMASS {
             public global::System.Data.DataColumn FIOColumn {
                 get {
                     return this.columnFIO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MailColumn {
-                get {
-                    return this.columnMail;
                 }
             }
             
@@ -454,6 +446,14 @@ namespace LMASS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,12 +489,11 @@ namespace LMASS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PersonRow AddPersonRow(string FIO, string Mail, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10) {
+            public PersonRow AddPersonRow(string FIO, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10, string Email) {
                 PersonRow rowPersonRow = ((PersonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         FIO,
-                        Mail,
                         CategoryID,
                         p1,
                         p2,
@@ -505,7 +504,8 @@ namespace LMASS {
                         p7,
                         p8,
                         p9,
-                        p10};
+                        p10,
+                        Email};
                 rowPersonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPersonRow);
                 return rowPersonRow;
@@ -537,7 +537,6 @@ namespace LMASS {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnFIO = base.Columns["FIO"];
-                this.columnMail = base.Columns["Mail"];
                 this.columnCategoryID = base.Columns["CategoryID"];
                 this.columnp1 = base.Columns["p1"];
                 this.columnp2 = base.Columns["p2"];
@@ -549,6 +548,7 @@ namespace LMASS {
                 this.columnp8 = base.Columns["p8"];
                 this.columnp9 = base.Columns["p9"];
                 this.columnp10 = base.Columns["p10"];
+                this.columnEmail = base.Columns["Email"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -558,8 +558,6 @@ namespace LMASS {
                 base.Columns.Add(this.columnID);
                 this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIO);
-                this.columnMail = new global::System.Data.DataColumn("Mail", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMail);
                 this.columnCategoryID = new global::System.Data.DataColumn("CategoryID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoryID);
                 this.columnp1 = new global::System.Data.DataColumn("p1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -582,6 +580,8 @@ namespace LMASS {
                 base.Columns.Add(this.columnp9);
                 this.columnp10 = new global::System.Data.DataColumn("p10", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnp10);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -592,8 +592,6 @@ namespace LMASS {
                 this.columnID.Unique = true;
                 this.columnFIO.AllowDBNull = false;
                 this.columnFIO.MaxLength = 50;
-                this.columnMail.AllowDBNull = false;
-                this.columnMail.MaxLength = 50;
                 this.columnCategoryID.AllowDBNull = false;
                 this.columnp1.MaxLength = 100;
                 this.columnp2.MaxLength = 100;
@@ -605,6 +603,8 @@ namespace LMASS {
                 this.columnp8.MaxLength = 100;
                 this.columnp9.MaxLength = 100;
                 this.columnp10.MaxLength = 100;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -764,17 +764,6 @@ namespace LMASS {
                 }
                 set {
                     this[this.tablePerson.FIOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Mail {
-                get {
-                    return ((string)(this[this.tablePerson.MailColumn]));
-                }
-                set {
-                    this[this.tablePerson.MailColumn] = value;
                 }
             }
             
@@ -946,6 +935,17 @@ namespace LMASS {
                 }
                 set {
                     this[this.tablePerson.p10Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Email {
+                get {
+                    return ((string)(this[this.tablePerson.EmailColumn]));
+                }
+                set {
+                    this[this.tablePerson.EmailColumn] = value;
                 }
             }
             
@@ -1231,7 +1231,6 @@ namespace LMASS.CategoryDataSetTableAdapters {
             tableMapping.DataSetTable = "Person";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("FIO", "FIO");
-            tableMapping.ColumnMappings.Add("Mail", "Mail");
             tableMapping.ColumnMappings.Add("CategoryID", "CategoryID");
             tableMapping.ColumnMappings.Add("p1", "p1");
             tableMapping.ColumnMappings.Add("p2", "p2");
@@ -1243,14 +1242,15 @@ namespace LMASS.CategoryDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("p8", "p8");
             tableMapping.ColumnMappings.Add("p9", "p9");
             tableMapping.ColumnMappings.Add("p10", "p10");
+            tableMapping.ColumnMappings.Add("Email", "Email");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Person] WHERE (([ID] = @Original_ID) AND ([FIO] = @Original_FIO) AND ([Mail] = @Original_Mail) AND ([CategoryID] = @Original_CategoryID) AND ((@IsNull_p1 = 1 AND [p1] IS NULL) OR ([p1] = @Original_p1)) AND ((@IsNull_p2 = 1 AND [p2] IS NULL) OR ([p2] = @Original_p2)) AND ((@IsNull_p3 = 1 AND [p3] IS NULL) OR ([p3] = @Original_p3)) AND ((@IsNull_p4 = 1 AND [p4] IS NULL) OR ([p4] = @Original_p4)) AND ((@IsNull_p5 = 1 AND [p5] IS NULL) OR ([p5] = @Original_p5)) AND ((@IsNull_p6 = 1 AND [p6] IS NULL) OR ([p6] = @Original_p6)) AND ((@IsNull_p7 = 1 AND [p7] IS NULL) OR ([p7] = @Original_p7)) AND ((@IsNull_p8 = 1 AND [p8] IS NULL) OR ([p8] = @Original_p8)) AND ((@IsNull_p9 = 1 AND [p9] IS NULL) OR ([p9] = @Original_p9)) AND ((@IsNull_p10 = 1 AND [p10] IS NULL) OR ([p10] = @Original_p10)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Person] WHERE (([ID] = @Original_ID) AND ([FIO] = @Original_FIO) AND ([Email] = @Original_Email) AND ([CategoryID] = @Original_CategoryID) AND ((@IsNull_p1 = 1 AND [p1] IS NULL) OR ([p1] = @Original_p1)) AND ((@IsNull_p2 = 1 AND [p2] IS NULL) OR ([p2] = @Original_p2)) AND ((@IsNull_p3 = 1 AND [p3] IS NULL) OR ([p3] = @Original_p3)) AND ((@IsNull_p4 = 1 AND [p4] IS NULL) OR ([p4] = @Original_p4)) AND ((@IsNull_p5 = 1 AND [p5] IS NULL) OR ([p5] = @Original_p5)) AND ((@IsNull_p6 = 1 AND [p6] IS NULL) OR ([p6] = @Original_p6)) AND ((@IsNull_p7 = 1 AND [p7] IS NULL) OR ([p7] = @Original_p7)) AND ((@IsNull_p8 = 1 AND [p8] IS NULL) OR ([p8] = @Original_p8)) AND ((@IsNull_p9 = 1 AND [p9] IS NULL) OR ([p9] = @Original_p9)) AND ((@IsNull_p10 = 1 AND [p10] IS NULL) OR ([p10] = @Original_p10)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FIO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Mail", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CategoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1274,11 +1274,11 @@ namespace LMASS.CategoryDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_p10", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p10", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Person] ([FIO], [Mail], [CategoryID], [p1], [p2], [p3], [p4], [p5], [p6], [p7], [p8], [p9], [p10]) VALUES (@FIO, @Mail, @CategoryID, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
-SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM Person WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Person] ([FIO], [Email], [CategoryID], [p1], [p2], [p3], [p4], [p5], [p6], [p7], [p8], [p9], [p10]) VALUES (@FIO, @Email, @CategoryID, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM Person WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1292,11 +1292,11 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p10", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p10", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Person] SET [FIO] = @FIO, [Mail] = @Mail, [CategoryID] = @CategoryID, [p1] = @p1, [p2] = @p2, [p3] = @p3, [p4] = @p4, [p5] = @p5, [p6] = @p6, [p7] = @p7, [p8] = @p8, [p9] = @p9, [p10] = @p10 WHERE (([ID] = @Original_ID) AND ([FIO] = @Original_FIO) AND ([Mail] = @Original_Mail) AND ([CategoryID] = @Original_CategoryID) AND ((@IsNull_p1 = 1 AND [p1] IS NULL) OR ([p1] = @Original_p1)) AND ((@IsNull_p2 = 1 AND [p2] IS NULL) OR ([p2] = @Original_p2)) AND ((@IsNull_p3 = 1 AND [p3] IS NULL) OR ([p3] = @Original_p3)) AND ((@IsNull_p4 = 1 AND [p4] IS NULL) OR ([p4] = @Original_p4)) AND ((@IsNull_p5 = 1 AND [p5] IS NULL) OR ([p5] = @Original_p5)) AND ((@IsNull_p6 = 1 AND [p6] IS NULL) OR ([p6] = @Original_p6)) AND ((@IsNull_p7 = 1 AND [p7] IS NULL) OR ([p7] = @Original_p7)) AND ((@IsNull_p8 = 1 AND [p8] IS NULL) OR ([p8] = @Original_p8)) AND ((@IsNull_p9 = 1 AND [p9] IS NULL) OR ([p9] = @Original_p9)) AND ((@IsNull_p10 = 1 AND [p10] IS NULL) OR ([p10] = @Original_p10)));
-SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM Person WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Person] SET [FIO] = @FIO, [Email] = @Email, [CategoryID] = @CategoryID, [p1] = @p1, [p2] = @p2, [p3] = @p3, [p4] = @p4, [p5] = @p5, [p6] = @p6, [p7] = @p7, [p8] = @p8, [p9] = @p9, [p10] = @p10 WHERE (([ID] = @Original_ID) AND ([FIO] = @Original_FIO) AND ([Email] = @Original_Email) AND ([CategoryID] = @Original_CategoryID) AND ((@IsNull_p1 = 1 AND [p1] IS NULL) OR ([p1] = @Original_p1)) AND ((@IsNull_p2 = 1 AND [p2] IS NULL) OR ([p2] = @Original_p2)) AND ((@IsNull_p3 = 1 AND [p3] IS NULL) OR ([p3] = @Original_p3)) AND ((@IsNull_p4 = 1 AND [p4] IS NULL) OR ([p4] = @Original_p4)) AND ((@IsNull_p5 = 1 AND [p5] IS NULL) OR ([p5] = @Original_p5)) AND ((@IsNull_p6 = 1 AND [p6] IS NULL) OR ([p6] = @Original_p6)) AND ((@IsNull_p7 = 1 AND [p7] IS NULL) OR ([p7] = @Original_p7)) AND ((@IsNull_p8 = 1 AND [p8] IS NULL) OR ([p8] = @Original_p8)) AND ((@IsNull_p9 = 1 AND [p9] IS NULL) OR ([p9] = @Original_p9)) AND ((@IsNull_p10 = 1 AND [p10] IS NULL) OR ([p10] = @Original_p10)));
+SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM Person WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1310,7 +1310,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p10", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p10", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FIO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Mail", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CategoryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "p1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1348,8 +1348,8 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM db" +
-                "o.Person where CategoryID=@CatID";
+            this._commandCollection[0].CommandText = "SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM d" +
+                "bo.Person where CategoryID=@CatID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CatID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -1413,7 +1413,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_FIO, string Original_Mail, int Original_CategoryID, string Original_p1, string Original_p2, string Original_p3, string Original_p4, string Original_p5, string Original_p6, string Original_p7, string Original_p8, string Original_p9, string Original_p10) {
+        public virtual int Delete(int Original_ID, string Original_FIO, string Original_Email, int Original_CategoryID, string Original_p1, string Original_p2, string Original_p3, string Original_p4, string Original_p5, string Original_p6, string Original_p7, string Original_p8, string Original_p9, string Original_p10) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_FIO == null)) {
                 throw new global::System.ArgumentNullException("Original_FIO");
@@ -1421,11 +1421,11 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_FIO));
             }
-            if ((Original_Mail == null)) {
-                throw new global::System.ArgumentNullException("Original_Mail");
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Mail));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Email));
             }
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_CategoryID));
             if ((Original_p1 == null)) {
@@ -1528,18 +1528,18 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string FIO, string Mail, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10) {
+        public virtual int Insert(string FIO, string Email, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10) {
             if ((FIO == null)) {
                 throw new global::System.ArgumentNullException("FIO");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(FIO));
             }
-            if ((Mail == null)) {
-                throw new global::System.ArgumentNullException("Mail");
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Mail));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Email));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(CategoryID));
             if ((p1 == null)) {
@@ -1624,7 +1624,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string FIO, 
-                    string Mail, 
+                    string Email, 
                     int CategoryID, 
                     string p1, 
                     string p2, 
@@ -1638,7 +1638,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
                     string p10, 
                     int Original_ID, 
                     string Original_FIO, 
-                    string Original_Mail, 
+                    string Original_Email, 
                     int Original_CategoryID, 
                     string Original_p1, 
                     string Original_p2, 
@@ -1657,11 +1657,11 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(FIO));
             }
-            if ((Mail == null)) {
-                throw new global::System.ArgumentNullException("Mail");
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Mail));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Email));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(CategoryID));
             if ((p1 == null)) {
@@ -1731,11 +1731,11 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_FIO));
             }
-            if ((Original_Mail == null)) {
-                throw new global::System.ArgumentNullException("Original_Mail");
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Mail));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Email));
             }
             this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_CategoryID));
             if ((Original_p1 == null)) {
@@ -1841,7 +1841,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string FIO, 
-                    string Mail, 
+                    string Email, 
                     int CategoryID, 
                     string p1, 
                     string p2, 
@@ -1855,7 +1855,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
                     string p10, 
                     int Original_ID, 
                     string Original_FIO, 
-                    string Original_Mail, 
+                    string Original_Email, 
                     int Original_CategoryID, 
                     string Original_p1, 
                     string Original_p2, 
@@ -1867,7 +1867,7 @@ SELECT ID, FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM P
                     string Original_p8, 
                     string Original_p9, 
                     string Original_p10) {
-            return this.Update(FIO, Mail, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, Original_ID, Original_FIO, Original_Mail, Original_CategoryID, Original_p1, Original_p2, Original_p3, Original_p4, Original_p5, Original_p6, Original_p7, Original_p8, Original_p9, Original_p10, Original_ID);
+            return this.Update(FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, Original_ID, Original_FIO, Original_Email, Original_CategoryID, Original_p1, Original_p2, Original_p3, Original_p4, Original_p5, Original_p6, Original_p7, Original_p8, Original_p9, Original_p10, Original_ID);
         }
     }
     

@@ -17,6 +17,7 @@ namespace LMASS
         public Categories()
         {
             InitializeComponent();
+            this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
                 
         public static int CatID;//ID выбранной нажатием категории для дальнейшего просмотра
@@ -25,23 +26,26 @@ namespace LMASS
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "categoriesDataSet.Category". При необходимости она может быть перемещена или удалена.
             this.categoryTableAdapter.Fill(this.categoriesDataSet.Category);
+            this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         }
 
         //просмотр категории по нажатию
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)//если клик на ID в строке
-               this.dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit); //Сохраним в кэш данные
+            {
+                this.CategoriesGridView.CommitEdit(DataGridViewDataErrorContexts.Commit); //Сохраним в кэш данные
 
-            CatID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
-
-            //открываем просмотр категории
-            Form frm = new Category();
-            frm.Show();
+                CatID = Convert.ToInt32(CategoriesGridView.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
+                //this.CategoriesGridView.CommitEdit(DataGridViewDataErrorContexts.Commit); //Сохраним в кэш данные
+                //открываем просмотр категории
+                Form frm = new Category();
+                frm.Show();
+            }
         }
 
         //Сохранить изменения
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -50,10 +54,18 @@ namespace LMASS
                 MessageBox.Show("Изменения в базе данных выполнены!",
                   "Уведомление о результатах", MessageBoxButtons.OK);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Изменения в базе данных выполнить не удалось!",
                   "Уведомление о результатах", MessageBoxButtons.OK);
+                FileStream f1;//инициализируем файл.
+                string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
+                //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
+                f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
+                StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
+                sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
+                sw.Close();// завершаем запись
+                f1.Dispose();// освобождаем файл
             }
         }
 

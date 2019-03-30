@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,8 +20,8 @@ namespace LMASS
         public Enter()
         {
             InitializeComponent();
-            textBox2.PasswordChar = '*';
-            button1.Enabled = false;
+            tbPassword.PasswordChar = '*';
+            btnOk.Enabled = false;
         }
 
         private void Enter_Load(object sender, EventArgs e)
@@ -27,22 +29,51 @@ namespace LMASS
 
         }
         //если введены все данные - кнопка активна
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void tbPassword_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
-            { button1.Enabled = true; }
+            if (tbLogin.Text.Length > 0)
+            { btnOk.Enabled = true; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOk_Click(object sender, EventArgs e)
         {
-            //запоминаем логин, пароль и сервис
-            Login = textBox1.Text;
-            Password = textBox2.Text;
-            Service = Login.Substring(Login.IndexOf('@') + 1);
-            Form frm = new Menu();
-            this.Hide();
-            frm.Show();
-      
+            //try
+            //{
+            //    //запоминаем логин, пароль и сервис
+                Login = tbLogin.Text;
+                Password = tbPassword.Text;
+                Service = Login.Substring(Login.IndexOf('@') + 1);
+
+                //// отправитель - устанавливаем адрес и отображаемое в письме имя
+                //MailAddress from = new MailAddress(Login);
+                //// кому отправляем
+                //MailAddress to = new MailAddress(Login);
+                //// создаем объект сообщения
+                //MailMessage m = new MailMessage(from, to);
+                //// адрес smtp-сервера и порт, с которого будем отправлять письмо
+                //SmtpClient smtp = new SmtpClient("smtp." + Service, 587);
+                //// логин и пароль
+                //smtp.Credentials = new NetworkCredential(Login, Password);
+                //smtp.EnableSsl = true;
+                //smtp.Send(m);
+                //Console.Read();
+                Form frm = new Menu();
+                this.Hide();
+                frm.Show();
+                frm.Closing += MenuClosing;
+     
+        //}
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Не удалось войти в почтовый ящик. Проверьту логин, пароль, наличие доступа к ящику сторонними приложениями.");
+        //    }
+
+        }
+        
+        //при закрытии фомы Menu
+        private void MenuClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

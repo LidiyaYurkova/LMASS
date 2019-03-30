@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CategoryGridView = new System.Windows.Forms.DataGridView();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.p3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,11 +47,11 @@
             this.p10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryDataSet = new LMASS.CategoryDataSet();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.ImportFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.personTableAdapter = new LMASS.CategoryDataSetTableAdapters.PersonTableAdapter();
-            this.button3 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
             this.SuspendLayout();
@@ -63,19 +63,20 @@
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             // 
-            // dataGridView1
+            // CategoryGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CategoryGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CategoryGridView.AutoGenerateColumns = false;
+            this.CategoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CategoryGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CategoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CategoryID,
             this.iDDataGridViewTextBoxColumn,
             this.fIODataGridViewTextBoxColumn,
-            this.mailDataGridViewTextBoxColumn,
+            this.Email,
             this.p1DataGridViewTextBoxColumn,
             this.p2DataGridViewTextBoxColumn,
             this.p3DataGridViewTextBoxColumn,
@@ -86,11 +87,11 @@
             this.p8DataGridViewTextBoxColumn,
             this.p9DataGridViewTextBoxColumn,
             this.p10DataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.personBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(745, 226);
-            this.dataGridView1.TabIndex = 0;
+            this.CategoryGridView.DataSource = this.personBindingSource;
+            this.CategoryGridView.Location = new System.Drawing.Point(3, 2);
+            this.CategoryGridView.Name = "CategoryGridView";
+            this.CategoryGridView.Size = new System.Drawing.Size(745, 226);
+            this.CategoryGridView.TabIndex = 0;
             // 
             // CategoryID
             // 
@@ -114,11 +115,11 @@
             this.fIODataGridViewTextBoxColumn.HeaderText = "ФИО";
             this.fIODataGridViewTextBoxColumn.Name = "fIODataGridViewTextBoxColumn";
             // 
-            // mailDataGridViewTextBoxColumn
+            // Email
             // 
-            this.mailDataGridViewTextBoxColumn.DataPropertyName = "Mail";
-            this.mailDataGridViewTextBoxColumn.HeaderText = "Mail";
-            this.mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
             // 
             // p1DataGridViewTextBoxColumn
             // 
@@ -190,47 +191,50 @@
             this.categoryDataSet.DataSetName = "CategoryDataSet";
             this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(342, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Сохранить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSave.Location = new System.Drawing.Point(342, 234);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImport.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnImport.Location = new System.Drawing.Point(3, 234);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 2;
+            this.btnImport.Text = "Импорт";
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // ImportFileDialog
+            // 
+            this.ImportFileDialog.FileName = "openFileDialog1";
             // 
             // personTableAdapter
             // 
             this.personTableAdapter.ClearBeforeFill = true;
             // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(3, 234);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Импорт";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Category
             // 
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(752, 261);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnImport);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.CategoryGridView);
             this.Name = "Category";
             this.Text = "Категория";
             this.Load += new System.EventHandler(this.Category_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -241,15 +245,17 @@
 
        
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView CategoryGridView;
+        private System.Windows.Forms.Button btnSave;
         private CategoryDataSet categoryDataSet;
         private System.Windows.Forms.BindingSource personBindingSource;
         private CategoryDataSetTableAdapters.PersonTableAdapter personTableAdapter;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.OpenFileDialog ImportFileDialog;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fIODataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn p1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn p2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn p3DataGridViewTextBoxColumn;
@@ -260,7 +266,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn p8DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn p9DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn p10DataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

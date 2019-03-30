@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,13 +18,14 @@ namespace LMASS
 {
     public partial class Message : Form
     {
-        public  ArrayList AllFields = new ArrayList();//все до поля
-        public ArrayList Mails = new ArrayList();//адреса категории
+        static object locker = new object();
+        public int CurrentCategoryID;
+        public ArrayList AllFields = new ArrayList();//все доп поля
+        public ArrayList Emails = new ArrayList();//адреса категории
         public string[] fileNames;// вложения
-        //подключение к БД
-        SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
-              
         string AttachFile = "";//файл вложения
+
+
         public Message()
         {
             InitializeComponent();
@@ -30,76 +33,80 @@ namespace LMASS
         }
 
         private void Message_Load(object sender, EventArgs e)
-        {            
-            ThisConnection.Open();//открываем соединение
+        {
+           
         }
 
         //выбор категорий
-        private void button1_Click(object sender, EventArgs e)
+        private void btnChooseCategory_Click(object sender, EventArgs e)
         {
-            checkBox1.Checked = false;
-            button5.Enabled = false;
-            CategoryList.CurrentCategoriesID.Clear();
+            //CategoryList.CurrentCategoriesID.Clear();
+            //CategoryList.CurrentCategoriesName.Clear();
+            lblCategories.Text = "";
+            btnSend.Enabled = false;
+            btnAddValues.Enabled = false;
             Form frm = new CategoryList();
             frm.Show();
             frm.Closing += CategoryListClosing;
-            
-
         }
         //при закрытии фомы списка категорий
         private void CategoryListClosing(object sender, EventArgs e)
         {
             if (CategoryList.CurrentCategoriesID.Count > 0)
             {
-                checkBox1.Checked = true;
-                button5.Enabled = true;
+                lblCategories.Text += CategoryList.CurrentCategoriesID.Count + ": ";
+                for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)
+                    lblCategories.Text += CategoryList.CurrentCategoriesName[i] + ", ";
+                btnAddValues.Enabled = true;
+                btnSend.Enabled = true;
             }
         }
 
         //выборка всех доп полей
         private void GetAllFields()
         {
-           
+            SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+            ThisConnection.Open();
             SqlCommand thisCommand = ThisConnection.CreateCommand();
-            for (int i=1; i<11; i++)
+            for (int i = 1; i < 11; i++)
             {
                 thisCommand.CommandText = "SELECT ColumnName" + (i) + " from Category where ID=" + CategoryList.CurrentCategoriesID[0] + "";
                 AllFields.Add("<" + thisCommand.ExecuteScalar().ToString() + ">");
             }
-
+            ThisConnection.Close();
         }
 
         //загрузка шаблона
-        private void button3_Click(object sender, EventArgs e)
+        private void btnGetTemplate_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Text files | *.txt";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                richTextBox1.LoadFile(dialog.FileName, RichTextBoxStreamType.PlainText);
-     
+                rtbLetter.LoadFile(dialog.FileName, RichTextBoxStreamType.PlainText);
+
         }
 
         //сохранение шаблона
-        private void button4_Click(object sender, EventArgs e)
+        private void btnSaveTemplate_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFile1 = new SaveFileDialog();
-            saveFile1.DefaultExt = "*.txt";
-            saveFile1.Filter = "TXT Files|*.txt";
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.DefaultExt = "*.txt";
+            saveFile.Filter = "TXT Files|*.txt";
 
-            if (saveFile1.ShowDialog() == DialogResult.OK && saveFile1.FileName.Length > 0)
+            if (saveFile.ShowDialog() == DialogResult.OK && saveFile.FileName.Length > 0)
             {
-                richTextBox1.SaveFile(saveFile1.FileName, RichTextBoxStreamType.PlainText);
+                rtbLetter.SaveFile(saveFile.FileName, RichTextBoxStreamType.PlainText);
             }
 
 
         }
 
         //выбор доп полей
-        private void button5_Click_1(object sender, EventArgs e)
+        private void btnAddValues_Click(object sender, EventArgs e)
         {
-            FieldsList.Fields.Clear();
+            //FieldsList.SelectedFields.Clear();
             FieldsList form = new FieldsList();
-            form.Show();          
+            form.Show();
             form.Closing += FieldsListClosing;  //обработка закрытия формы
 
         }
@@ -107,104 +114,200 @@ namespace LMASS
         //при закрытии фомы списка полей
         private void FieldsListClosing(object sender, EventArgs e)
         {
-            for (int i = 0; i < FieldsList.Fields.Count; i++)
-                richTextBox1.Text += FieldsList.Fields[i] + " ";
+            for (int i = 0; i < FieldsList.SelectedFields.Count; i++)
+                rtbLetter.Text += FieldsList.SelectedFields[i] + " ";
         }
 
 
         //загрузка вложения
-        private void button6_Click(object sender, EventArgs e)
+        private void btnAddFile_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            lblFiles.Text = "";
+            if (TemplateFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                fileNames = openFileDialog1.FileNames;
-                label1.Text += "Выбрано файлов: "+ fileNames.Length;
+                fileNames = TemplateFileDialog.FileNames;
+                lblFiles.Text += fileNames.Length + ": ";
+                for (int i = 0; i< fileNames.Length;i++)
+                    lblFiles.Text += Path.GetFileNameWithoutExtension(fileNames[i])+", ";
             }
         }
 
+
+
         //отправка
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            // отправитель - устанавливаем адрес
-            MailAddress from = new MailAddress(LMASS.Enter.Login);
-            MailAddress to; // кому отправляем
-            MailMessage m;// создаем объект сообщения
-            SmtpClient smtp;// адрес smtp-сервера                      
-            
-            SqlCommand[] Command = new SqlCommand[12];//команды для выборки
-            for (int i = 0; i < 12; i++)
-               Command[i] = ThisConnection.CreateCommand();
-                        
-            SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
-
-            //преобразование переноса строки в HTML
-            string htmlLetter = richTextBox1.Text;
-            htmlLetter = htmlLetter.Replace("\n", "<br>");
-
-                                            
-            if (checkBox1.Checked == false) //если не выбрали категорию
+            try
             {
-                MessageBox.Show("Выберите категорию!","Ошибка");
-            }
-            
-            else
-            {
-                for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)//цикл по выбранным категориям
-                {
+                //if (CategoryList.CurrentCategoriesID.Count == 0) //если не выбрали категорию
+                // {
+                //     MessageBox.Show("Выберите категорию!", "Ошибка");
+                // }
+
+                // else
+                // {
+                lblSending.Visible = true;
+                btnSend.Enabled = false;
+                    SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+                    ThisConnection.Open();
+                    Thread masThread;
+                    SqlCommand SelectEmails = new SqlCommand();//команды для выборки
+                    SelectEmails = ThisConnection.CreateCommand();
+                    SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
+
                     GetAllFields();//выбираем все доп поля категории
-                    //берем адрес
-                    Command[0].CommandText = " SELECT Mail FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i];
-                                       
-                    thisReader = Command[0].ExecuteReader();//перебор адресов
-                    
-                    while (thisReader.Read())//выбираем адреса
-                    {
-                        Mails.Add(thisReader["Mail"].ToString());
-                        Console.Read();
-                    }
-                    thisReader.Close();// закрываем ридер
+                    for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)//цикл по выбранным категориям
+                    {                      
+                                       //берем адрес
+                        SelectEmails.CommandText = " SELECT Email FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i];
+                        CurrentCategoryID = Convert.ToInt32(CategoryList.CurrentCategoriesID[i]);
+                        thisReader = SelectEmails.ExecuteReader();//перебор адресов
 
-                    for (int adr=0; adr < Mails.Count; adr++)// отправка писем
-                    {
-                        string letter = htmlLetter;//письмо с <br>
-                        Command[1].CommandText = "  SELECT FIO FROM Person WHERE Mail= '" + Mails[adr] + "' AND CategoryID='"+ CategoryList.CurrentCategoriesID[i]+"'"; //берем ФИО
-
-                        letter = letter.Replace("<ФИО>", Command[1].ExecuteScalar().ToString());//заменяем <ФИО>
-                        letter = letter.Replace("<Адрес>", Mails[adr].ToString());//заменяем <Адрес>
-
-
-                        for (int j = 2; j < 12; j++)//выбираем данные остальных полей
+                        while (thisReader.Read())//выбираем адреса
                         {
-                            Command[j].CommandText = "  SELECT p" + (j - 1) + " FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i] + " AND Mail= '" + Mails[adr] + "'";
-                            letter = letter.Replace(AllFields[j - 2].ToString(), Command[j].ExecuteScalar().ToString());//заменяем <>
+                            Emails.Add(thisReader["Email"].ToString());
                         }
-                        
-                        to = new MailAddress(Mails[adr].ToString());
-                        m = new MailMessage(from, to);
+                        thisReader.Close();
+                        ThisConnection.Close();
+                        string htmlLetter = rtbLetter.Text;
+                        letter = htmlLetter.Replace("\n", "<br>");
+                      //  letter = htmlLetter;//письмо с <br>
 
-                        if (fileNames != null)//вложение, если есть
-                            for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                        ArrayList Threads = new ArrayList();//все до поля
+                        int threadsNum = 0;
+                        int msgNum = 5;
+                   
+
+                        if ((Emails.Count % msgNum) > 0)//если кол-во адресов в списке IPs не кратно кол-ву адресов для проверки одним потоком
+                            threadsNum = Emails.Count / 10 + 1;//то кол-во потоков = кол-во адресов в списке / кол-во адресов для проверки одним потоком +1
+                                                                    //т.е. если у нас 11 адресов, а один поток считет по 10, мы ищем остаток от деления первого на второе, если остаток есть, значит дужно на один потоко больше чем деление на цело
+                        else threadsNum = Emails.Count / 10;
+
+                        for (int j = 0; i < threadsNum; i++)//после того, как мы определились с количеством потоков, в цикле создадим и запустим их.
+                        {
+
+                            Interval interval = new Interval();//создаем экземпляр структуры, которая содержит в себе необходимые данные для проверки (см. описание в   struct Interval)
+                            interval.from = msgNum * j;//заносим индекс первого адреса для проверки текущим потоком.
+                                                           //Вычисляется он так: у нас есть количество адресов для проверки одним потоком, его мы умножим на индекс i и получим помер адреса в списке для проверки.
+                            interval.num = msgNum;//кол-во адресов для проверки одним потоком
+                            if (i == threadsNum - 1 && (Emails.Count % msgNum) > 0)//если мы создаём последний поток и остались свободные адреса (остаток од деления при вычислнении кол-ва потоков)
+                                interval.num = Emails.Count % msgNum;//то кол-во адресов для проверки = остатку
+
+                            masThread = new Thread(sending);//инициализация потока с вызовом функции провекри
+                            masThread.Start(interval);//старт потока с передачей адгумента, в котором содержится индекс первогопроверяемого потоком адреса и кол-во адресов для проверки
+                            Threads.Add(masThread);//добавление потока в список потоков
+
+                        }
+                        foreach (Thread thread in Threads)//перебирая потоки в списке потоков
                             {
-                                AttachFile = fileNames[f];
-                                m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                                thread.Join();//присоединяем каждый поток, т.е. основной поток программы будет ждать окончание работы всех порождённых присоединённых потоков.
+                                              //это нужно для корректной работы приложения (см. подробнее в Main)
                             }
-                        m.Subject = textBox1.Text;   // тема письма                        
-                        m.Body = "<h2>" + letter + "</h2>";// текст письма                        
-                        m.IsBodyHtml = true;// письмо представляет код html                       
-                        smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
-                        smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
-                        smtp.EnableSsl = true;
-                        smtp.Send(m);
 
+                       
+                       
                     }
-                                        
-                }
+                lblSending.Visible = false;
+                btnSend.Enabled = true;
+                MessageBox.Show("Готово!", "Отправка");
+              
+                //  }
 
-                MessageBox.Show("Готово!","Отправка");
             }
-           // ThisConnection.Close();
-        }    
+            catch (Exception ex)
+            {
+                FileStream f1;//инициализируем файл.
+                string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
+                //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
+                f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
+                StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
+                sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
+                sw.Close();// завершаем запись
+                f1.Dispose();// освобождаем файл
 
+                MessageBox.Show(ex.Message.ToString(), "Ошибка");
+            }
+
+        }
+        struct Interval//структура для передачи адресов на проверку потоку. 
+                       //При запуске потока можно передать только один аргумент, а нам нужно два: индекс начала (с какого по счёту адреса в списке будет производиться проверка доступа) и количество проверяемых адресов. 
+                       //Именно поэтому нужна структора, которая содержит два поля. Её мы и будем передавать потоку.
+        {
+            public int from;//числовое поле INTEGER, в котором будет храниться идекс первого проверяемого потоком адреса в списке.
+            public int num;//числовое поле INTEGER, в котором будет храниться количество проверяемых адресов.
+        }
+        string letter;
+         private  void sending(object context)
+        {
+            //try
+            //{
+                SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+                ThisConnection.Open();
         
+                // отправитель - устанавливаем адрес
+                MailAddress from = new MailAddress(LMASS.Enter.Login);
+                MailAddress to; // кому отправляем
+                MailMessage m;// создаем объект сообщения
+                SmtpClient smtp;// адрес smtp-сервера      
+                SqlCommand Command = new SqlCommand();//команды для выборки
+                Command = ThisConnection.CreateCommand();
+                SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
+              
+
+                Interval interval = (Interval)context;
+                int first = interval.from;
+                int last = first + interval.num;
+
+                for (int i = first; i < last; i++)
+                   {
+                    Command.CommandText = "  SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
+                    thisReader = Command.ExecuteReader();
+                    thisReader.Read();
+                  
+                    letter = letter.Replace("<ФИО>", thisReader["FIO"].ToString());//заменяем <ФИО>
+                    letter = letter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
+                    for (int j = 0; j < 10; j++)
+                       letter = letter.Replace(AllFields[j].ToString(), thisReader["p"+(j+1)].ToString());//заменяем <>
+
+
+                    to = new MailAddress(Emails[i].ToString());
+                    m = new MailMessage(from, to);
+
+                    if (fileNames != null)//вложение, если есть
+                        for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                        {
+                            AttachFile = fileNames[f];
+                            m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                        }
+                    m.Subject = tbTheme.Text;   // тема письма                        
+                    m.Body = "<h2>" + letter + "</h2>";// текст письма                        
+                    m.IsBodyHtml = true;// письмо представляет код html                       
+                    smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
+                    smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.EnableSsl = true;
+                    smtp.Send(m);
+                    thisReader.Close();
+     
+                }
+            //}
+            //catch (Exception ex)
+            //{
+            //    lock (locker)
+            //    {
+            //        FileStream f1;//инициализируем файл.
+            //        string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
+            //                                                                                                                              //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
+            //        f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
+            //        StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
+            //        sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
+            //        sw.Close();// завершаем запись
+            //        f1.Dispose();// освобождаем файл
+
+
+            //    }
+            //}
+        }
     }
+    
 }

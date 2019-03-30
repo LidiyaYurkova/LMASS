@@ -28,105 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnChooseCategory = new System.Windows.Forms.Button();
+            this.tbTheme = new System.Windows.Forms.TextBox();
+            this.rtbLetter = new System.Windows.Forms.RichTextBox();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.btnGetTemplate = new System.Windows.Forms.Button();
+            this.btnSaveTemplate = new System.Windows.Forms.Button();
+            this.btnAddValues = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnAddFile = new System.Windows.Forms.Button();
+            this.TemplateFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.lblCategories = new System.Windows.Forms.Label();
+            this.lblFiles = new System.Windows.Forms.Label();
+            this.lblSending = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnChooseCategory
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Выберите категории";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnChooseCategory.Location = new System.Drawing.Point(12, 12);
+            this.btnChooseCategory.Name = "btnChooseCategory";
+            this.btnChooseCategory.Size = new System.Drawing.Size(135, 23);
+            this.btnChooseCategory.TabIndex = 0;
+            this.btnChooseCategory.Text = "Выберите категории";
+            this.btnChooseCategory.UseVisualStyleBackColor = true;
+            this.btnChooseCategory.Click += new System.EventHandler(this.btnChooseCategory_Click);
             // 
-            // checkBox1
+            // tbTheme
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(154, 17);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(12, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(454, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Тема письма";
+            this.tbTheme.Location = new System.Drawing.Point(13, 67);
+            this.tbTheme.Name = "tbTheme";
+            this.tbTheme.Size = new System.Drawing.Size(454, 20);
+            this.tbTheme.TabIndex = 2;
+            this.tbTheme.Text = "Тема письма";
             // 
-            // richTextBox1
+            // rtbLetter
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rtbLetter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(13, 68);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(453, 341);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.rtbLetter.Location = new System.Drawing.Point(13, 93);
+            this.rtbLetter.Name = "rtbLetter";
+            this.rtbLetter.Size = new System.Drawing.Size(453, 424);
+            this.rtbLetter.TabIndex = 3;
+            this.rtbLetter.Text = "";
             // 
-            // button2
+            // btnSend
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(13, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Отправить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSend.Enabled = false;
+            this.btnSend.Location = new System.Drawing.Point(13, 523);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 4;
+            this.btnSend.Text = "Отправить";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // button3
+            // btnGetTemplate
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(234, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Загрузить шаблон";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnGetTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetTemplate.Location = new System.Drawing.Point(234, 12);
+            this.btnGetTemplate.Name = "btnGetTemplate";
+            this.btnGetTemplate.Size = new System.Drawing.Size(109, 23);
+            this.btnGetTemplate.TabIndex = 5;
+            this.btnGetTemplate.Text = "Загрузить шаблон";
+            this.btnGetTemplate.UseVisualStyleBackColor = true;
+            this.btnGetTemplate.Click += new System.EventHandler(this.btnGetTemplate_Click);
             // 
-            // button4
+            // btnSaveTemplate
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(349, 12);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Сохранить шаблон";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnSaveTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveTemplate.Location = new System.Drawing.Point(349, 12);
+            this.btnSaveTemplate.Name = "btnSaveTemplate";
+            this.btnSaveTemplate.Size = new System.Drawing.Size(117, 23);
+            this.btnSaveTemplate.TabIndex = 6;
+            this.btnSaveTemplate.Text = "Сохранить шаблон";
+            this.btnSaveTemplate.UseVisualStyleBackColor = true;
+            this.btnSaveTemplate.Click += new System.EventHandler(this.btnSaveTemplate_Click);
             // 
-            // button5
+            // btnAddValues
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(341, 415);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(125, 23);
-            this.button5.TabIndex = 17;
-            this.button5.Text = "Вставить поля";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            this.btnAddValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddValues.Enabled = false;
+            this.btnAddValues.Location = new System.Drawing.Point(341, 523);
+            this.btnAddValues.Name = "btnAddValues";
+            this.btnAddValues.Size = new System.Drawing.Size(125, 23);
+            this.btnAddValues.TabIndex = 17;
+            this.btnAddValues.Text = "Вставить поля";
+            this.btnAddValues.UseVisualStyleBackColor = true;
+            this.btnAddValues.Click += new System.EventHandler(this.btnAddValues_Click);
             // 
             // label2
             // 
@@ -136,47 +128,71 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 18;
             // 
-            // button6
+            // btnAddFile
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.Location = new System.Drawing.Point(94, 415);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 23);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "Прикрепить файл";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnAddFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddFile.Location = new System.Drawing.Point(94, 523);
+            this.btnAddFile.Name = "btnAddFile";
+            this.btnAddFile.Size = new System.Drawing.Size(115, 23);
+            this.btnAddFile.TabIndex = 19;
+            this.btnAddFile.Text = "Прикрепить файл";
+            this.btnAddFile.UseVisualStyleBackColor = true;
+            this.btnAddFile.Click += new System.EventHandler(this.btnAddFile_Click);
             // 
-            // openFileDialog1
+            // TemplateFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Multiselect = true;
+            this.TemplateFileDialog.Multiselect = true;
             // 
-            // label1
+            // lblCategories
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 420);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = " ";
+            this.lblCategories.AutoSize = true;
+            this.lblCategories.Location = new System.Drawing.Point(12, 38);
+            this.lblCategories.MaximumSize = new System.Drawing.Size(150, 13);
+            this.lblCategories.Name = "lblCategories";
+            this.lblCategories.Size = new System.Drawing.Size(10, 13);
+            this.lblCategories.TabIndex = 20;
+            this.lblCategories.Text = " ";
+            // 
+            // lblFiles
+            // 
+            this.lblFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFiles.AutoSize = true;
+            this.lblFiles.Location = new System.Drawing.Point(91, 549);
+            this.lblFiles.MaximumSize = new System.Drawing.Size(150, 13);
+            this.lblFiles.Name = "lblFiles";
+            this.lblFiles.Size = new System.Drawing.Size(10, 13);
+            this.lblFiles.TabIndex = 21;
+            this.lblFiles.Text = " ";
+            // 
+            // lblSending
+            // 
+            this.lblSending.AutoSize = true;
+            this.lblSending.BackColor = System.Drawing.Color.MistyRose;
+            this.lblSending.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSending.Location = new System.Drawing.Point(44, 247);
+            this.lblSending.Name = "lblSending";
+            this.lblSending.Size = new System.Drawing.Size(397, 76);
+            this.lblSending.TabIndex = 22;
+            this.lblSending.Text = "Рассылка...";
+            this.lblSending.Visible = false;
             // 
             // Message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button6);
+            this.ClientSize = new System.Drawing.Size(481, 571);
+            this.Controls.Add(this.lblSending);
+            this.Controls.Add(this.lblFiles);
+            this.Controls.Add(this.lblCategories);
+            this.Controls.Add(this.btnAddFile);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddValues);
+            this.Controls.Add(this.btnSaveTemplate);
+            this.Controls.Add(this.btnGetTemplate);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.rtbLetter);
+            this.Controls.Add(this.tbTheme);
+            this.Controls.Add(this.btnChooseCategory);
             this.Name = "Message";
             this.Text = "Рассылка";
             this.Load += new System.EventHandler(this.Message_Load);
@@ -187,17 +203,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnChooseCategory;
+        private System.Windows.Forms.TextBox tbTheme;
+        private System.Windows.Forms.RichTextBox rtbLetter;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnGetTemplate;
+        private System.Windows.Forms.Button btnSaveTemplate;
+        private System.Windows.Forms.Button btnAddValues;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAddFile;
+        private System.Windows.Forms.OpenFileDialog TemplateFileDialog;
+        private System.Windows.Forms.Label lblCategories;
+        private System.Windows.Forms.Label lblFiles;
+        private System.Windows.Forms.Label lblSending;
     }
 }

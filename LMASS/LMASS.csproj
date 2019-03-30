@@ -184,5 +184,14 @@
   <ItemGroup>
     <None Include="Resources\abstraktsiya_pyatna_akvarel_art_svetlyj_116061_2560x1600.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b67f79889911027.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

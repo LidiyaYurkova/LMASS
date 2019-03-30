@@ -14,8 +14,8 @@ namespace LMASS
 {
     public partial class FieldsList : Form
     {
-        public static ArrayList Fields = new ArrayList();//названия доп полей
-                
+        public static ArrayList SelectedFields = new ArrayList();//названия доп полей
+        public static ArrayList AllFields = new ArrayList();//названия доп полей
         CheckBox[] cb;//названия полей
         public FieldsList()
         {
@@ -59,12 +59,15 @@ namespace LMASS
 
         }
         //готово
-        private void button1_Click(object sender, EventArgs e)
-        {            
+        private void btnOk_Click(object sender, EventArgs e)
+        {
             for (int i = 0; i < 12; i++)//заполняем массив доп полей
-                if (cb[i].Checked == true)
-                 Fields.Add("<"+cb[i].Text+">");
+            {
+                if (i > 1) AllFields.Add("<" + cb[i].Text + ">");
 
+                if (cb[i].Checked == true)
+                    SelectedFields.Add("<" + cb[i].Text + ">");
+            }
             this.Close();
         }
     }
