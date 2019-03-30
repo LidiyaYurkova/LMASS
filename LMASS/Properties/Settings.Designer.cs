@@ -26,8 +26,8 @@ namespace LMASS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=LMASS;Integrated Security=True;MultipleA" +
-            "ctiveResultSets=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=LMASS;Integrated Security=True;Max Pool " +
+            "Size=5000;MultipleActiveResultSets=True")]
         public string connString {
             get {
                 return ((string)(this["connString"]));

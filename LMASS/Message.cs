@@ -65,7 +65,7 @@ namespace LMASS
         //выборка всех доп полей
         private void GetAllFields()
         {
-            SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+            SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS;Max Pool Size=5000;Integrated Security = True");
             ThisConnection.Open();
             SqlCommand thisCommand = ThisConnection.CreateCommand();
             for (int i = 1; i < 11; i++)
@@ -148,7 +148,7 @@ namespace LMASS
                 // {
                 lblSending.Visible = true;
                 btnSend.Enabled = false;
-                    SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+                    SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS;Max Pool Size=5000; Integrated Security = True");
                     ThisConnection.Open();
                     Thread masThread;
                     SqlCommand SelectEmails = new SqlCommand();//команды для выборки
@@ -175,22 +175,22 @@ namespace LMASS
 
                         ArrayList Threads = new ArrayList();//все до поля
                         int threadsNum = 0;
-                        int msgNum = 5;
+                        int msgNum = 10;
                    
 
                         if ((Emails.Count % msgNum) > 0)//если кол-во адресов в списке IPs не кратно кол-ву адресов для проверки одним потоком
-                            threadsNum = Emails.Count / 10 + 1;//то кол-во потоков = кол-во адресов в списке / кол-во адресов для проверки одним потоком +1
+                            threadsNum = Emails.Count / msgNum + 1;//то кол-во потоков = кол-во адресов в списке / кол-во адресов для проверки одним потоком +1
                                                                     //т.е. если у нас 11 адресов, а один поток считет по 10, мы ищем остаток от деления первого на второе, если остаток есть, значит дужно на один потоко больше чем деление на цело
-                        else threadsNum = Emails.Count / 10;
+                        else threadsNum = Emails.Count / msgNum;
 
-                        for (int j = 0; i < threadsNum; i++)//после того, как мы определились с количеством потоков, в цикле создадим и запустим их.
+                        for (int j = 0; j < threadsNum; j++)//после того, как мы определились с количеством потоков, в цикле создадим и запустим их.
                         {
 
                             Interval interval = new Interval();//создаем экземпляр структуры, которая содержит в себе необходимые данные для проверки (см. описание в   struct Interval)
                             interval.from = msgNum * j;//заносим индекс первого адреса для проверки текущим потоком.
                                                            //Вычисляется он так: у нас есть количество адресов для проверки одним потоком, его мы умножим на индекс i и получим помер адреса в списке для проверки.
                             interval.num = msgNum;//кол-во адресов для проверки одним потоком
-                            if (i == threadsNum - 1 && (Emails.Count % msgNum) > 0)//если мы создаём последний поток и остались свободные адреса (остаток од деления при вычислнении кол-ва потоков)
+                            if (j == threadsNum - 1 && (Emails.Count % msgNum) > 0)//если мы создаём последний поток и остались свободные адреса (остаток од деления при вычислнении кол-ва потоков)
                                 interval.num = Emails.Count % msgNum;//то кол-во адресов для проверки = остатку
 
                             masThread = new Thread(sending);//инициализация потока с вызовом функции провекри
@@ -239,10 +239,11 @@ namespace LMASS
         string letter;
          private  void sending(object context)
         {
-            //try
-            //{
-                SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
-                ThisConnection.Open();
+            try
+            {
+                using (SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Max Pool Size=5000;Integrated Security = True"))
+                {
+                    ThisConnection.Open();
         
                 // отправитель - устанавливаем адрес
                 MailAddress from = new MailAddress(LMASS.Enter.Login);
@@ -258,55 +259,56 @@ namespace LMASS
                 int first = interval.from;
                 int last = first + interval.num;
 
-                for (int i = first; i < last; i++)
-                   {
-                    Command.CommandText = "  SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
-                    thisReader = Command.ExecuteReader();
-                    thisReader.Read();
-                  
-                    letter = letter.Replace("<ФИО>", thisReader["FIO"].ToString());//заменяем <ФИО>
-                    letter = letter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
-                    for (int j = 0; j < 10; j++)
-                       letter = letter.Replace(AllFields[j].ToString(), thisReader["p"+(j+1)].ToString());//заменяем <>
+                    for (int i = first; i < last; i++)
+                    {
+                        Command.CommandText = "  SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
+                        thisReader = Command.ExecuteReader();
+                        thisReader.Read();
+
+                        letter = letter.Replace("<ФИО>", thisReader["FIO"].ToString());//заменяем <ФИО>
+                        letter = letter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
+                        for (int j = 0; j < 10; j++)
+                            letter = letter.Replace(AllFields[j].ToString(), thisReader["p" + (j + 1)].ToString());//заменяем <>
 
 
-                    to = new MailAddress(Emails[i].ToString());
-                    m = new MailMessage(from, to);
+                        to = new MailAddress(Emails[i].ToString());
+                        m = new MailMessage(from, to);
 
-                    if (fileNames != null)//вложение, если есть
-                        for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
-                        {
-                            AttachFile = fileNames[f];
-                            m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
-                        }
-                    m.Subject = tbTheme.Text;   // тема письма                        
-                    m.Body = "<h2>" + letter + "</h2>";// текст письма                        
-                    m.IsBodyHtml = true;// письмо представляет код html                       
-                    smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
-                    smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    smtp.EnableSsl = true;
-                    smtp.Send(m);
-                    thisReader.Close();
-     
+                        if (fileNames != null)//вложение, если есть
+                            for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                            {
+                                AttachFile = fileNames[f];
+                                m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                            }
+                        m.Subject = tbTheme.Text;   // тема письма                        
+                        m.Body = "<h2>" + letter + "</h2>";// текст письма                        
+                        m.IsBodyHtml = true;// письмо представляет код html                       
+                        smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
+                        smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtp.EnableSsl = true;
+                        smtp.Send(m);
+                        thisReader.Close();
+
+                    }
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    lock (locker)
-            //    {
-            //        FileStream f1;//инициализируем файл.
-            //        string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
-            //                                                                                                                              //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
-            //        f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
-            //        StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
-            //        sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
-            //        sw.Close();// завершаем запись
-            //        f1.Dispose();// освобождаем файл
+            }
+            catch (Exception ex)
+            {
+                lock (locker)
+                {
+                    FileStream f1;//инициализируем файл.
+                    string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
+                                                                                                                                          //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
+                    f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
+                    StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
+                    sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
+                    sw.Close();// завершаем запись
+                    f1.Dispose();// освобождаем файл
 
 
-            //    }
-            //}
+                }
+            }
         }
     }
     
