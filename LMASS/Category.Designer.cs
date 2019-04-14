@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Category));
             this.button1 = new System.Windows.Forms.Button();
             this.CategoryGridView = new System.Windows.Forms.DataGridView();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +71,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryGridView.AutoGenerateColumns = false;
             this.CategoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CategoryGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CategoryGridView.BackgroundColor = System.Drawing.Color.Lavender;
             this.CategoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CategoryID,
@@ -88,9 +89,10 @@
             this.p9DataGridViewTextBoxColumn,
             this.p10DataGridViewTextBoxColumn});
             this.CategoryGridView.DataSource = this.personBindingSource;
-            this.CategoryGridView.Location = new System.Drawing.Point(3, 2);
+            this.CategoryGridView.Location = new System.Drawing.Point(-2, -1);
             this.CategoryGridView.Name = "CategoryGridView";
-            this.CategoryGridView.Size = new System.Drawing.Size(745, 226);
+            this.CategoryGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.CategoryGridView.Size = new System.Drawing.Size(755, 226);
             this.CategoryGridView.TabIndex = 0;
             // 
             // CategoryID
@@ -196,9 +198,13 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSave.Location = new System.Drawing.Point(342, 234);
+            this.btnSave.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.Info;
+            this.btnSave.Location = new System.Drawing.Point(328, 225);
+            this.btnSave.MinimumSize = new System.Drawing.Size(75, 23);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(95, 35);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -208,9 +214,13 @@
             // 
             this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnImport.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnImport.Location = new System.Drawing.Point(3, 234);
+            this.btnImport.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnImport.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnImport.Location = new System.Drawing.Point(1, 225);
+            this.btnImport.MinimumSize = new System.Drawing.Size(75, 23);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.Size = new System.Drawing.Size(95, 35);
             this.btnImport.TabIndex = 2;
             this.btnImport.Text = "Импорт";
             this.btnImport.UseVisualStyleBackColor = false;
@@ -227,10 +237,12 @@
             // Category
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(752, 261);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.CategoryGridView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Category";
             this.Text = "Категория";
             this.Load += new System.EventHandler(this.Category_Load);

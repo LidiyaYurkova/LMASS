@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Message));
             this.btnChooseCategory = new System.Windows.Forms.Button();
             this.tbTheme = new System.Windows.Forms.TextBox();
             this.rtbLetter = new System.Windows.Forms.RichTextBox();
@@ -45,9 +46,12 @@
             // 
             // btnChooseCategory
             // 
+            this.btnChooseCategory.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnChooseCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnChooseCategory.ForeColor = System.Drawing.SystemColors.Window;
             this.btnChooseCategory.Location = new System.Drawing.Point(12, 12);
             this.btnChooseCategory.Name = "btnChooseCategory";
-            this.btnChooseCategory.Size = new System.Drawing.Size(135, 23);
+            this.btnChooseCategory.Size = new System.Drawing.Size(148, 23);
             this.btnChooseCategory.TabIndex = 0;
             this.btnChooseCategory.Text = "Выберите категории";
             this.btnChooseCategory.UseVisualStyleBackColor = true;
@@ -57,6 +61,7 @@
             // 
             this.tbTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTheme.BackColor = System.Drawing.SystemColors.Window;
             this.tbTheme.Location = new System.Drawing.Point(13, 67);
             this.tbTheme.Name = "tbTheme";
             this.tbTheme.Size = new System.Drawing.Size(454, 20);
@@ -68,6 +73,7 @@
             this.rtbLetter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbLetter.BackColor = System.Drawing.SystemColors.Window;
             this.rtbLetter.Location = new System.Drawing.Point(13, 93);
             this.rtbLetter.Name = "rtbLetter";
             this.rtbLetter.Size = new System.Drawing.Size(453, 424);
@@ -77,10 +83,13 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSend.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.btnSend.Enabled = false;
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSend.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSend.Location = new System.Drawing.Point(13, 523);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.Size = new System.Drawing.Size(79, 36);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "Отправить";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -89,9 +98,12 @@
             // btnGetTemplate
             // 
             this.btnGetTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetTemplate.Location = new System.Drawing.Point(234, 12);
+            this.btnGetTemplate.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnGetTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGetTemplate.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnGetTemplate.Location = new System.Drawing.Point(210, 12);
             this.btnGetTemplate.Name = "btnGetTemplate";
-            this.btnGetTemplate.Size = new System.Drawing.Size(109, 23);
+            this.btnGetTemplate.Size = new System.Drawing.Size(125, 23);
             this.btnGetTemplate.TabIndex = 5;
             this.btnGetTemplate.Text = "Загрузить шаблон";
             this.btnGetTemplate.UseVisualStyleBackColor = true;
@@ -100,9 +112,12 @@
             // btnSaveTemplate
             // 
             this.btnSaveTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveTemplate.Location = new System.Drawing.Point(349, 12);
+            this.btnSaveTemplate.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnSaveTemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSaveTemplate.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnSaveTemplate.Location = new System.Drawing.Point(341, 12);
             this.btnSaveTemplate.Name = "btnSaveTemplate";
-            this.btnSaveTemplate.Size = new System.Drawing.Size(117, 23);
+            this.btnSaveTemplate.Size = new System.Drawing.Size(125, 23);
             this.btnSaveTemplate.TabIndex = 6;
             this.btnSaveTemplate.Text = "Сохранить шаблон";
             this.btnSaveTemplate.UseVisualStyleBackColor = true;
@@ -111,7 +126,10 @@
             // btnAddValues
             // 
             this.btnAddValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddValues.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.btnAddValues.Enabled = false;
+            this.btnAddValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddValues.ForeColor = System.Drawing.SystemColors.Window;
             this.btnAddValues.Location = new System.Drawing.Point(341, 523);
             this.btnAddValues.Name = "btnAddValues";
             this.btnAddValues.Size = new System.Drawing.Size(125, 23);
@@ -131,9 +149,12 @@
             // btnAddFile
             // 
             this.btnAddFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddFile.Location = new System.Drawing.Point(94, 523);
+            this.btnAddFile.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnAddFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddFile.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnAddFile.Location = new System.Drawing.Point(98, 523);
             this.btnAddFile.Name = "btnAddFile";
-            this.btnAddFile.Size = new System.Drawing.Size(115, 23);
+            this.btnAddFile.Size = new System.Drawing.Size(126, 23);
             this.btnAddFile.TabIndex = 19;
             this.btnAddFile.Text = "Прикрепить файл";
             this.btnAddFile.UseVisualStyleBackColor = true;
@@ -146,6 +167,8 @@
             // lblCategories
             // 
             this.lblCategories.AutoSize = true;
+            this.lblCategories.BackColor = System.Drawing.Color.Transparent;
+            this.lblCategories.ForeColor = System.Drawing.SystemColors.Window;
             this.lblCategories.Location = new System.Drawing.Point(12, 38);
             this.lblCategories.MaximumSize = new System.Drawing.Size(150, 13);
             this.lblCategories.Name = "lblCategories";
@@ -157,7 +180,9 @@
             // 
             this.lblFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblFiles.AutoSize = true;
-            this.lblFiles.Location = new System.Drawing.Point(91, 549);
+            this.lblFiles.BackColor = System.Drawing.Color.Transparent;
+            this.lblFiles.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblFiles.Location = new System.Drawing.Point(98, 549);
             this.lblFiles.MaximumSize = new System.Drawing.Size(150, 13);
             this.lblFiles.Name = "lblFiles";
             this.lblFiles.Size = new System.Drawing.Size(10, 13);
@@ -167,7 +192,7 @@
             // lblSending
             // 
             this.lblSending.AutoSize = true;
-            this.lblSending.BackColor = System.Drawing.Color.MistyRose;
+            this.lblSending.BackColor = System.Drawing.Color.Crimson;
             this.lblSending.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblSending.Location = new System.Drawing.Point(44, 247);
             this.lblSending.Name = "lblSending";
@@ -180,6 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(481, 571);
             this.Controls.Add(this.lblSending);
             this.Controls.Add(this.lblFiles);
@@ -193,6 +219,7 @@
             this.Controls.Add(this.rtbLetter);
             this.Controls.Add(this.tbTheme);
             this.Controls.Add(this.btnChooseCategory);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Message";
             this.Text = "Рассылка";
             this.Load += new System.EventHandler(this.Message_Load);

@@ -34,19 +34,26 @@ namespace LMASS
             cb[0].Location = new Point(20, 20 + 20 * 0);
             Controls.Add(cb[0]);
             cb[0].Text = "ФИО";
-           
+            cb[0].ForeColor = SystemColors.Window;
+            cb[0].BackColor = Color.Transparent; 
+
+
             cb[1] = new CheckBox(); //второе адрес
             cb[1].Size = new Size(100, 20);
             cb[1].Location = new Point(20, 20 + 20 * 1);
             Controls.Add(cb[1]);
             cb[1].Text = "Адрес";
-           
+            cb[1].ForeColor = SystemColors.Window;
+            cb[1].BackColor = Color.Transparent;
+
             if (CategoryList.CurrentCategoriesID.Count==1)
                 for (int i = 2; i < 12; i++) //остальные грузим из бд
                 {
                     cb[i] = new CheckBox();
                     cb[i].Size = new Size(100, 20);
                     cb[i].Location = new Point(20, 20 + 20 * i);
+                    cb[i].ForeColor = SystemColors.Window;
+                    cb[i].BackColor = Color.Transparent;
                     Controls.Add(cb[i]);
                     thisCommand.CommandText = "SELECT ColumnName" + (i - 1) + " from Category where ID=" + CategoryList.CurrentCategoriesID[0] + "";
                

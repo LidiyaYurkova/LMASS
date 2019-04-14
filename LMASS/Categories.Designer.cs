@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categories));
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -55,25 +56,20 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSave.Location = new System.Drawing.Point(343, 234);
+            this.btnSave.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 2);
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Для просмотра данных категории нажмите на её номер";
             // 
             // openFileDialog1
             // 
@@ -81,12 +77,10 @@
             // 
             // CategoriesGridView
             // 
-            this.CategoriesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.CategoriesGridView, "CategoriesGridView");
             this.CategoriesGridView.AutoGenerateColumns = false;
             this.CategoriesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CategoriesGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CategoriesGridView.BackgroundColor = System.Drawing.Color.Lavender;
             this.CategoriesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -102,83 +96,80 @@
             this.columnName9DataGridViewTextBoxColumn,
             this.columnName10DataGridViewTextBoxColumn});
             this.CategoriesGridView.DataSource = this.categoryBindingSource;
-            this.CategoriesGridView.Location = new System.Drawing.Point(2, 17);
             this.CategoriesGridView.Name = "CategoriesGridView";
-            this.CategoriesGridView.Size = new System.Drawing.Size(752, 213);
-            this.CategoriesGridView.TabIndex = 0;
             this.CategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoriesGridView_CellContentClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            resources.ApplyResources(this.iDDataGridViewTextBoxColumn, "iDDataGridViewTextBoxColumn");
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // categoryNameDataGridViewTextBoxColumn
             // 
             this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
-            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "Название категории";
+            resources.ApplyResources(this.categoryNameDataGridViewTextBoxColumn, "categoryNameDataGridViewTextBoxColumn");
             this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
             // 
             // columnName1DataGridViewTextBoxColumn
             // 
             this.columnName1DataGridViewTextBoxColumn.DataPropertyName = "ColumnName1";
-            this.columnName1DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName1DataGridViewTextBoxColumn, "columnName1DataGridViewTextBoxColumn");
             this.columnName1DataGridViewTextBoxColumn.Name = "columnName1DataGridViewTextBoxColumn";
             // 
             // columnName2DataGridViewTextBoxColumn
             // 
             this.columnName2DataGridViewTextBoxColumn.DataPropertyName = "ColumnName2";
-            this.columnName2DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName2DataGridViewTextBoxColumn, "columnName2DataGridViewTextBoxColumn");
             this.columnName2DataGridViewTextBoxColumn.Name = "columnName2DataGridViewTextBoxColumn";
             // 
             // columnName3DataGridViewTextBoxColumn
             // 
             this.columnName3DataGridViewTextBoxColumn.DataPropertyName = "ColumnName3";
-            this.columnName3DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName3DataGridViewTextBoxColumn, "columnName3DataGridViewTextBoxColumn");
             this.columnName3DataGridViewTextBoxColumn.Name = "columnName3DataGridViewTextBoxColumn";
             // 
             // columnName4DataGridViewTextBoxColumn
             // 
             this.columnName4DataGridViewTextBoxColumn.DataPropertyName = "ColumnName4";
-            this.columnName4DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName4DataGridViewTextBoxColumn, "columnName4DataGridViewTextBoxColumn");
             this.columnName4DataGridViewTextBoxColumn.Name = "columnName4DataGridViewTextBoxColumn";
             // 
             // columnName5DataGridViewTextBoxColumn
             // 
             this.columnName5DataGridViewTextBoxColumn.DataPropertyName = "ColumnName5";
-            this.columnName5DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName5DataGridViewTextBoxColumn, "columnName5DataGridViewTextBoxColumn");
             this.columnName5DataGridViewTextBoxColumn.Name = "columnName5DataGridViewTextBoxColumn";
             // 
             // columnName6DataGridViewTextBoxColumn
             // 
             this.columnName6DataGridViewTextBoxColumn.DataPropertyName = "ColumnName6";
-            this.columnName6DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName6DataGridViewTextBoxColumn, "columnName6DataGridViewTextBoxColumn");
             this.columnName6DataGridViewTextBoxColumn.Name = "columnName6DataGridViewTextBoxColumn";
             // 
             // columnName7DataGridViewTextBoxColumn
             // 
             this.columnName7DataGridViewTextBoxColumn.DataPropertyName = "ColumnName7";
-            this.columnName7DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName7DataGridViewTextBoxColumn, "columnName7DataGridViewTextBoxColumn");
             this.columnName7DataGridViewTextBoxColumn.Name = "columnName7DataGridViewTextBoxColumn";
             // 
             // columnName8DataGridViewTextBoxColumn
             // 
             this.columnName8DataGridViewTextBoxColumn.DataPropertyName = "ColumnName8";
-            this.columnName8DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName8DataGridViewTextBoxColumn, "columnName8DataGridViewTextBoxColumn");
             this.columnName8DataGridViewTextBoxColumn.Name = "columnName8DataGridViewTextBoxColumn";
             // 
             // columnName9DataGridViewTextBoxColumn
             // 
             this.columnName9DataGridViewTextBoxColumn.DataPropertyName = "ColumnName9";
-            this.columnName9DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName9DataGridViewTextBoxColumn, "columnName9DataGridViewTextBoxColumn");
             this.columnName9DataGridViewTextBoxColumn.Name = "columnName9DataGridViewTextBoxColumn";
             // 
             // columnName10DataGridViewTextBoxColumn
             // 
             this.columnName10DataGridViewTextBoxColumn.DataPropertyName = "ColumnName10";
-            this.columnName10DataGridViewTextBoxColumn.HeaderText = "Название поля";
+            resources.ApplyResources(this.columnName10DataGridViewTextBoxColumn, "columnName10DataGridViewTextBoxColumn");
             this.columnName10DataGridViewTextBoxColumn.Name = "columnName10DataGridViewTextBoxColumn";
             // 
             // categoryBindingSource
@@ -197,15 +188,14 @@
             // 
             // Categories
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(757, 258);
+            this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.CategoriesGridView);
             this.Name = "Categories";
-            this.Text = "Категории";
             this.Load += new System.EventHandler(this.Categories_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CategoriesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();

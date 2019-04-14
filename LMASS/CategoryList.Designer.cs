@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.btnOk = new System.Windows.Forms.Button();
             this.CategoryListGridView = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryListDataSet = new LMASS.CategoryListDataSet();
             this.categoryTableAdapter = new LMASS.CategoryListDataSetTableAdapters.CategoryTableAdapter();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryListDataSet)).BeginInit();
@@ -47,10 +47,14 @@
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnOk.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnOk.Location = new System.Drawing.Point(109, 330);
+            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnOk.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnOk.Location = new System.Drawing.Point(102, 321);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(83, 30);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
@@ -63,40 +67,19 @@
             this.CategoryListGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryListGridView.AutoGenerateColumns = false;
-            this.CategoryListGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CategoryListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CategoryListGridView.BackgroundColor = System.Drawing.Color.Lavender;
             this.CategoryListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryListGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.categoryNameDataGridViewTextBoxColumn,
             this.Column1});
             this.CategoryListGridView.DataSource = this.categoryBindingSource;
-            this.CategoryListGridView.Location = new System.Drawing.Point(3, 3);
+            this.CategoryListGridView.Location = new System.Drawing.Point(0, 0);
             this.CategoryListGridView.Name = "CategoryListGridView";
-            this.CategoryListGridView.Size = new System.Drawing.Size(278, 321);
+            this.CategoryListGridView.Size = new System.Drawing.Size(286, 321);
             this.CategoryListGridView.TabIndex = 2;
             this.CategoryListGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryListGridView_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // categoryNameDataGridViewTextBoxColumn
-            // 
-            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
-            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "Название категории";
-            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
-            this.categoryNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 30;
             // 
             // categoryBindingSource
             // 
@@ -112,12 +95,36 @@
             // 
             this.categoryTableAdapter.ClearBeforeFill = true;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // categoryNameDataGridViewTextBoxColumn
+            // 
+            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
+            this.categoryNameDataGridViewTextBoxColumn.FillWeight = 169.5432F;
+            this.categoryNameDataGridViewTextBoxColumn.HeaderText = "Название категории";
+            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            this.categoryNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 30.45685F;
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // CategoryList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(286, 359);
+            this.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.ClientSize = new System.Drawing.Size(286, 351);
             this.Controls.Add(this.CategoryListGridView);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

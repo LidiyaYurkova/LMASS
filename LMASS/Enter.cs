@@ -21,7 +21,7 @@ namespace LMASS
         {
             InitializeComponent();
             tbPassword.PasswordChar = '*';
-            btnOk.Enabled = false;
+            
         }
 
         private void Enter_Load(object sender, EventArgs e)
@@ -32,7 +32,8 @@ namespace LMASS
         private void tbPassword_TextChanged(object sender, EventArgs e)
         {
             if (tbLogin.Text.Length > 0)
-            { btnOk.Enabled = true; }
+            btnOk.Enabled = true; 
+            
         }
 
         private void btnOk_Click(object sender, EventArgs e)

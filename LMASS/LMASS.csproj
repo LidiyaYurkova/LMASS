@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1146327.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -182,16 +185,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\abstraktsiya_pyatna_akvarel_art_svetlyj_116061_2560x1600.jpg" />
+    <None Include="Resources\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1.jpg" />
+    <None Include="Resources\galaxy-dark-space-cb-1920x1080.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2.jpg" />
+    <None Include="Resources\background1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\b67f79889911027.jpg" />
+    <Content Include="1146327.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
