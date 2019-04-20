@@ -76,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbLetter.BackColor = System.Drawing.SystemColors.Window;
-            this.rtbLetter.Font = new System.Drawing.Font("Comic Sans MS", 9F);
+            this.rtbLetter.Font = new System.Drawing.Font("Arial", 9F);
             this.rtbLetter.Location = new System.Drawing.Point(13, 93);
             this.rtbLetter.Name = "rtbLetter";
             this.rtbLetter.Size = new System.Drawing.Size(453, 424);
@@ -197,7 +197,6 @@
             this.lblFiles.Size = new System.Drawing.Size(11, 13);
             this.lblFiles.TabIndex = 21;
             this.lblFiles.Text = " ";
-    
             // 
             // lblSending
             // 

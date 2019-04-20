@@ -17,12 +17,17 @@ namespace LMASS
         public Category()
         {
             InitializeComponent();
+            this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
         }
 
         private void Category_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "categoryDataSet.Person". При необходимости она может быть перемещена или удалена.
+            this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.CatID);
+            this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+           
+       
             //для ID категории по умолчанию(добавление элементов иначе не работает)
             CategoryGridView.DefaultValuesNeeded += new DataGridViewRowEventHandler(CategoryGridView_DefaultValuesNeeded);
 

@@ -16,13 +16,17 @@ namespace LMASS
         public CategoryList()
         {
             InitializeComponent();
+            this.CategoryListGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
         }
         public static ArrayList CurrentCategoriesID = new ArrayList(); //список выбранных категорий
         public static ArrayList CurrentCategoriesName = new ArrayList();
 
         private void CategoryList_Load(object sender, EventArgs e)
         {
+            this.CategoryListGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.categoryTableAdapter.Fill(this.categoryListDatabaseDataSet.Category);
+            this.CategoryListGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             CurrentCategoriesID.Clear();
             CurrentCategoriesName.Clear();
 
