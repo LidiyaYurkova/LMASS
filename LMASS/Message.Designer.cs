@@ -197,7 +197,7 @@
             this.lblFiles.Size = new System.Drawing.Size(11, 13);
             this.lblFiles.TabIndex = 21;
             this.lblFiles.Text = " ";
-            this.lblFiles.Click += new System.EventHandler(this.lblFiles_Click);
+    
             // 
             // lblSending
             // 

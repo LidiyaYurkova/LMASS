@@ -127,8 +127,12 @@ namespace LMASS
         {
             try
             {
+                AllFields.Clear();
+                Emails.Clear();
+
                 lblSending.Visible = true;
                 btnSend.Enabled = false;
+
                 SqlConnection ThisConnection = new SqlConnection(DatabasePath);
                 ThisConnection.Open();
                 Thread masThread;
@@ -200,12 +204,10 @@ namespace LMASS
             }
 
         }
-        struct Interval//структура для передачи адресов на проверку потоку. 
-                       //При запуске потока можно передать только один аргумент, а нам нужно два: индекс начала (с какого по счёту адреса в списке будет производиться проверка доступа) и количество проверяемых адресов. 
-                       //Именно поэтому нужна структора, которая содержит два поля. Её мы и будем передавать потоку.
+        struct Interval
         {
-            public int from;//числовое поле INTEGER, в котором будет храниться идекс первого проверяемого потоком адреса в списке.
-            public int num;//числовое поле INTEGER, в котором будет храниться количество проверяемых адресов.
+            public int from;
+            public int num;
         }
         string letter;
          private  void sending(object context)
@@ -283,11 +285,7 @@ namespace LMASS
                 }
             }
         }
-
-        private void lblFiles_Click(object sender, EventArgs e)
-        {
-
-        }
+              
     }
     
 }
