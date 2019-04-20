@@ -283,6 +283,8 @@ namespace LMASS {
             
             private global::System.Data.DataColumn columnFIO;
             
+            private global::System.Data.DataColumn columnEmail;
+            
             private global::System.Data.DataColumn columnCategoryID;
             
             private global::System.Data.DataColumn columnp1;
@@ -304,8 +306,6 @@ namespace LMASS {
             private global::System.Data.DataColumn columnp9;
             
             private global::System.Data.DataColumn columnp10;
-            
-            private global::System.Data.DataColumn columnEmail;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -353,6 +353,14 @@ namespace LMASS {
             public global::System.Data.DataColumn FIOColumn {
                 get {
                     return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
                 }
             }
             
@@ -446,14 +454,6 @@ namespace LMASS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn EmailColumn {
-                get {
-                    return this.columnEmail;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,11 +489,12 @@ namespace LMASS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PersonRow AddPersonRow(string FIO, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10, string Email) {
+            public PersonRow AddPersonRow(string FIO, string Email, int CategoryID, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9, string p10) {
                 PersonRow rowPersonRow = ((PersonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         FIO,
+                        Email,
                         CategoryID,
                         p1,
                         p2,
@@ -504,8 +505,7 @@ namespace LMASS {
                         p7,
                         p8,
                         p9,
-                        p10,
-                        Email};
+                        p10};
                 rowPersonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPersonRow);
                 return rowPersonRow;
@@ -537,6 +537,7 @@ namespace LMASS {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnFIO = base.Columns["FIO"];
+                this.columnEmail = base.Columns["Email"];
                 this.columnCategoryID = base.Columns["CategoryID"];
                 this.columnp1 = base.Columns["p1"];
                 this.columnp2 = base.Columns["p2"];
@@ -548,7 +549,6 @@ namespace LMASS {
                 this.columnp8 = base.Columns["p8"];
                 this.columnp9 = base.Columns["p9"];
                 this.columnp10 = base.Columns["p10"];
-                this.columnEmail = base.Columns["Email"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -558,6 +558,8 @@ namespace LMASS {
                 base.Columns.Add(this.columnID);
                 this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIO);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
                 this.columnCategoryID = new global::System.Data.DataColumn("CategoryID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoryID);
                 this.columnp1 = new global::System.Data.DataColumn("p1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -580,8 +582,6 @@ namespace LMASS {
                 base.Columns.Add(this.columnp9);
                 this.columnp10 = new global::System.Data.DataColumn("p10", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnp10);
-                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEmail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -592,6 +592,8 @@ namespace LMASS {
                 this.columnID.Unique = true;
                 this.columnFIO.AllowDBNull = false;
                 this.columnFIO.MaxLength = 50;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 50;
                 this.columnCategoryID.AllowDBNull = false;
                 this.columnp1.MaxLength = 100;
                 this.columnp2.MaxLength = 100;
@@ -603,8 +605,6 @@ namespace LMASS {
                 this.columnp8.MaxLength = 100;
                 this.columnp9.MaxLength = 100;
                 this.columnp10.MaxLength = 100;
-                this.columnEmail.AllowDBNull = false;
-                this.columnEmail.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -764,6 +764,17 @@ namespace LMASS {
                 }
                 set {
                     this[this.tablePerson.FIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Email {
+                get {
+                    return ((string)(this[this.tablePerson.EmailColumn]));
+                }
+                set {
+                    this[this.tablePerson.EmailColumn] = value;
                 }
             }
             
@@ -935,17 +946,6 @@ namespace LMASS {
                 }
                 set {
                     this[this.tablePerson.p10Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Email {
-                get {
-                    return ((string)(this[this.tablePerson.EmailColumn]));
-                }
-                set {
-                    this[this.tablePerson.EmailColumn] = value;
                 }
             }
             
@@ -1231,6 +1231,7 @@ namespace LMASS.CategoryDataSetTableAdapters {
             tableMapping.DataSetTable = "Person";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("FIO", "FIO");
+            tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("CategoryID", "CategoryID");
             tableMapping.ColumnMappings.Add("p1", "p1");
             tableMapping.ColumnMappings.Add("p2", "p2");
@@ -1242,7 +1243,6 @@ namespace LMASS.CategoryDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("p8", "p8");
             tableMapping.ColumnMappings.Add("p9", "p9");
             tableMapping.ColumnMappings.Add("p10", "p10");
-            tableMapping.ColumnMappings.Add("Email", "Email");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1339,7 +1339,7 @@ SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::LMASS.Properties.Settings.Default.connString;
+            this._connection.ConnectionString = global::LMASS.Properties.Settings.Default.LMASSDatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

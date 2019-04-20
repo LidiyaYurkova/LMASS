@@ -26,11 +26,11 @@ namespace LMASS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=LMASS;Integrated Security=True;Max Pool " +
-            "Size=5000;MultipleActiveResultSets=True")]
-        public string connString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LMASSDatabase" +
+            ".mdf;Integrated Security=True;MultipleActiveResultSets=True")]
+        public string LMASSDatabaseConnectionString {
             get {
-                return ((string)(this["connString"]));
+                return ((string)(this["LMASSDatabaseConnectionString"]));
             }
         }
     }

@@ -23,27 +23,25 @@ namespace LMASS
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "categoryDataSet.Person". При необходимости она может быть перемещена или удалена.
             this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.CatID);
-
-          
             //для ID категории по умолчанию(добавление элементов иначе не работает)
             CategoryGridView.DefaultValuesNeeded += new DataGridViewRowEventHandler(CategoryGridView_DefaultValuesNeeded);
 
-            //название колонок
-            SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+            //названия колонок
+            SqlConnection ThisConnection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LMASSDatabase.mdf;Integrated Security=True");
             ThisConnection.Open();
             SqlCommand SelectFields = ThisConnection.CreateCommand();
             
             for (int i=1; i<11; i++)//выбираем и присваиваем новые названия
             {
                 SelectFields.CommandText = "SELECT ColumnName"+i+" from Category where ID=" + Categories.CatID + "";
-                
-                CategoryGridView.Columns[i+3].HeaderText = SelectFields.ExecuteScalar().ToString();
+                if (SelectFields.ExecuteScalar().ToString() != "")
+                    CategoryGridView.Columns[i + 3].HeaderText = SelectFields.ExecuteScalar().ToString();
+                else CategoryGridView.Columns[i + 3].Visible = false;
             }
             
         }
 
         //для ID категории по умолчанию(добавление элементов иначе не работает)
-
         private void CategoryGridView_DefaultValuesNeeded(object sender,System.Windows.Forms.DataGridViewRowEventArgs e)
         {
             for (int i = 0; i < CategoryGridView.RowCount; i++)
@@ -64,7 +62,7 @@ namespace LMASS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Изменения в базе данных выполнить не удалось!",
+                MessageBox.Show("Изменения в базе данных выполнить не удалось! Смотрите подробности в LMASS.log",
                   "Уведомление о результатах", MessageBoxButtons.OK);
                 FileStream f1;//инициализируем файл.
                 string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
@@ -82,7 +80,7 @@ namespace LMASS
         {
             try
             {
-                SqlConnection ThisConnection = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog = LMASS; Integrated Security = True");
+                SqlConnection ThisConnection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LMASSDatabase.mdf;Integrated Security=True");
                 ThisConnection.Open();
                 SqlCommand Import = ThisConnection.CreateCommand();
 

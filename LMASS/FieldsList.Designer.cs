@@ -36,15 +36,15 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnOk.BackColor = System.Drawing.Color.LavenderBlush;
             this.btnOk.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnOk.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnOk.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnOk.ForeColor = System.Drawing.Color.Black;
             this.btnOk.Location = new System.Drawing.Point(48, 265);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(151, 23);
+            this.btnOk.Size = new System.Drawing.Size(151, 32);
             this.btnOk.TabIndex = 0;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "Ок";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -52,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(255, 300);
             this.Controls.Add(this.btnOk);

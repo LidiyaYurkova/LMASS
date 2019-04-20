@@ -1295,7 +1295,7 @@ SELECT ID, CategoryName, ColumnName1, ColumnName2, ColumnName3, ColumnName4, Col
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::LMASS.Properties.Settings.Default.connString;
+            this._connection.ConnectionString = global::LMASS.Properties.Settings.Default.LMASSDatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

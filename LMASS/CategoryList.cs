@@ -17,14 +17,15 @@ namespace LMASS
         {
             InitializeComponent();
         }
-       
         public static ArrayList CurrentCategoriesID = new ArrayList(); //список выбранных категорий
         public static ArrayList CurrentCategoriesName = new ArrayList();
+
         private void CategoryList_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "categoryListDataSet.Category". При необходимости она может быть перемещена или удалена.
-            this.categoryTableAdapter.Fill(this.categoryListDataSet.Category);
-            
+            this.categoryTableAdapter.Fill(this.categoryListDatabaseDataSet.Category);
+            CurrentCategoriesID.Clear();
+            CurrentCategoriesName.Clear();
+
         }
 
         //При клике грида
@@ -41,8 +42,6 @@ namespace LMASS
             else { CurrentCategoriesID.Remove(Convert.ToInt32(CategoryListGridView.Rows[e.RowIndex].Cells[0].Value));
                 CurrentCategoriesName.Remove(CategoryListGridView.Rows[e.RowIndex].Cells[1].Value);
             }
-
-
         }
 
         //ok

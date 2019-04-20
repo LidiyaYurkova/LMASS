@@ -34,18 +34,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CategoriesGridView = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName7DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName8DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName9DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoriesDataSet = new LMASS.CategoriesDataSet();
             this.categoryTableAdapter = new LMASS.CategoriesDataSetTableAdapters.CategoryTableAdapter();
@@ -57,9 +57,13 @@
             // btnSave
             // 
             resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSave.BackColor = System.Drawing.Color.LavenderBlush;
             this.btnSave.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -68,7 +72,7 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Name = "label1";
             // 
             // openFileDialog1
@@ -80,97 +84,97 @@
             resources.ApplyResources(this.CategoriesGridView, "CategoriesGridView");
             this.CategoriesGridView.AutoGenerateColumns = false;
             this.CategoriesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CategoriesGridView.BackgroundColor = System.Drawing.Color.Lavender;
+            this.CategoriesGridView.BackgroundColor = System.Drawing.Color.OldLace;
             this.CategoriesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.categoryNameDataGridViewTextBoxColumn,
-            this.columnName1DataGridViewTextBoxColumn,
-            this.columnName2DataGridViewTextBoxColumn,
-            this.columnName3DataGridViewTextBoxColumn,
-            this.columnName4DataGridViewTextBoxColumn,
-            this.columnName5DataGridViewTextBoxColumn,
-            this.columnName6DataGridViewTextBoxColumn,
-            this.columnName7DataGridViewTextBoxColumn,
-            this.columnName8DataGridViewTextBoxColumn,
-            this.columnName9DataGridViewTextBoxColumn,
-            this.columnName10DataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12});
             this.CategoriesGridView.DataSource = this.categoryBindingSource;
             this.CategoriesGridView.Name = "CategoriesGridView";
             this.CategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoriesGridView_CellContentClick);
             // 
-            // iDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn, "iDDataGridViewTextBoxColumn");
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // categoryNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.categoryNameDataGridViewTextBoxColumn.DataPropertyName = "CategoryName";
-            resources.ApplyResources(this.categoryNameDataGridViewTextBoxColumn, "categoryNameDataGridViewTextBoxColumn");
-            this.categoryNameDataGridViewTextBoxColumn.Name = "categoryNameDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "CategoryName";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // columnName1DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.columnName1DataGridViewTextBoxColumn.DataPropertyName = "ColumnName1";
-            resources.ApplyResources(this.columnName1DataGridViewTextBoxColumn, "columnName1DataGridViewTextBoxColumn");
-            this.columnName1DataGridViewTextBoxColumn.Name = "columnName1DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ColumnName1";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // columnName2DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.columnName2DataGridViewTextBoxColumn.DataPropertyName = "ColumnName2";
-            resources.ApplyResources(this.columnName2DataGridViewTextBoxColumn, "columnName2DataGridViewTextBoxColumn");
-            this.columnName2DataGridViewTextBoxColumn.Name = "columnName2DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ColumnName2";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // columnName3DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn5
             // 
-            this.columnName3DataGridViewTextBoxColumn.DataPropertyName = "ColumnName3";
-            resources.ApplyResources(this.columnName3DataGridViewTextBoxColumn, "columnName3DataGridViewTextBoxColumn");
-            this.columnName3DataGridViewTextBoxColumn.Name = "columnName3DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ColumnName3";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // columnName4DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn6
             // 
-            this.columnName4DataGridViewTextBoxColumn.DataPropertyName = "ColumnName4";
-            resources.ApplyResources(this.columnName4DataGridViewTextBoxColumn, "columnName4DataGridViewTextBoxColumn");
-            this.columnName4DataGridViewTextBoxColumn.Name = "columnName4DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ColumnName4";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // columnName5DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn7
             // 
-            this.columnName5DataGridViewTextBoxColumn.DataPropertyName = "ColumnName5";
-            resources.ApplyResources(this.columnName5DataGridViewTextBoxColumn, "columnName5DataGridViewTextBoxColumn");
-            this.columnName5DataGridViewTextBoxColumn.Name = "columnName5DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "ColumnName5";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn7, "dataGridViewTextBoxColumn7");
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // columnName6DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn8
             // 
-            this.columnName6DataGridViewTextBoxColumn.DataPropertyName = "ColumnName6";
-            resources.ApplyResources(this.columnName6DataGridViewTextBoxColumn, "columnName6DataGridViewTextBoxColumn");
-            this.columnName6DataGridViewTextBoxColumn.Name = "columnName6DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ColumnName6";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn8, "dataGridViewTextBoxColumn8");
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // columnName7DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn9
             // 
-            this.columnName7DataGridViewTextBoxColumn.DataPropertyName = "ColumnName7";
-            resources.ApplyResources(this.columnName7DataGridViewTextBoxColumn, "columnName7DataGridViewTextBoxColumn");
-            this.columnName7DataGridViewTextBoxColumn.Name = "columnName7DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ColumnName7";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn9, "dataGridViewTextBoxColumn9");
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // columnName8DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn10
             // 
-            this.columnName8DataGridViewTextBoxColumn.DataPropertyName = "ColumnName8";
-            resources.ApplyResources(this.columnName8DataGridViewTextBoxColumn, "columnName8DataGridViewTextBoxColumn");
-            this.columnName8DataGridViewTextBoxColumn.Name = "columnName8DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ColumnName8";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn10, "dataGridViewTextBoxColumn10");
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
-            // columnName9DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn11
             // 
-            this.columnName9DataGridViewTextBoxColumn.DataPropertyName = "ColumnName9";
-            resources.ApplyResources(this.columnName9DataGridViewTextBoxColumn, "columnName9DataGridViewTextBoxColumn");
-            this.columnName9DataGridViewTextBoxColumn.Name = "columnName9DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "ColumnName9";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn11, "dataGridViewTextBoxColumn11");
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // columnName10DataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn12
             // 
-            this.columnName10DataGridViewTextBoxColumn.DataPropertyName = "ColumnName10";
-            resources.ApplyResources(this.columnName10DataGridViewTextBoxColumn, "columnName10DataGridViewTextBoxColumn");
-            this.columnName10DataGridViewTextBoxColumn.Name = "columnName10DataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "ColumnName10";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn12, "dataGridViewTextBoxColumn12");
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
             // categoryBindingSource
             // 
@@ -190,7 +194,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
@@ -225,5 +229,17 @@
         private CategoriesDataSet categoriesDataSet;
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private CategoriesDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
     }
 }

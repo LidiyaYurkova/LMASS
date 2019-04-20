@@ -39,23 +39,23 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(18, 25);
+            this.label1.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(19, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 20);
+            this.label1.Size = new System.Drawing.Size(177, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите действие";
             // 
             // btnMessage
             // 
-            this.btnMessage.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnMessage.BackColor = System.Drawing.Color.LavenderBlush;
             this.btnMessage.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnMessage.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnMessage.Location = new System.Drawing.Point(39, 64);
+            this.btnMessage.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMessage.ForeColor = System.Drawing.Color.Black;
+            this.btnMessage.Location = new System.Drawing.Point(26, 65);
             this.btnMessage.Name = "btnMessage";
-            this.btnMessage.Size = new System.Drawing.Size(133, 44);
+            this.btnMessage.Size = new System.Drawing.Size(160, 44);
             this.btnMessage.TabIndex = 1;
             this.btnMessage.Text = "Рассылка";
             this.btnMessage.UseVisualStyleBackColor = false;
@@ -63,13 +63,13 @@
             // 
             // btnCategories
             // 
-            this.btnCategories.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCategories.BackColor = System.Drawing.Color.LavenderBlush;
             this.btnCategories.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCategories.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCategories.Location = new System.Drawing.Point(39, 115);
+            this.btnCategories.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCategories.ForeColor = System.Drawing.Color.Black;
+            this.btnCategories.Location = new System.Drawing.Point(26, 115);
             this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Size = new System.Drawing.Size(133, 45);
+            this.btnCategories.Size = new System.Drawing.Size(158, 45);
             this.btnCategories.TabIndex = 2;
             this.btnCategories.Text = "Категории";
             this.btnCategories.UseVisualStyleBackColor = false;
@@ -77,13 +77,13 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button3.BackColor = System.Drawing.Color.LavenderBlush;
             this.button3.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.SystemColors.Window;
-            this.button3.Location = new System.Drawing.Point(39, 183);
+            this.button3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(26, 195);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(133, 26);
+            this.button3.Size = new System.Drawing.Size(160, 30);
             this.button3.TabIndex = 3;
             this.button3.Text = "Выход";
             this.button3.UseVisualStyleBackColor = false;
@@ -94,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImage = global::LMASS.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(209, 237);
             this.Controls.Add(this.button3);
