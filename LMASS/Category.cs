@@ -24,7 +24,7 @@ namespace LMASS
         private void Category_Load(object sender, EventArgs e)
         {
             this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.CatID);
+            this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.ClickedCategoryID);
             this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
            
        
@@ -38,7 +38,7 @@ namespace LMASS
             
             for (int i=1; i<11; i++)//выбираем и присваиваем новые названия
             {
-                SelectFields.CommandText = "SELECT ColumnName"+i+" from Category where ID=" + Categories.CatID + "";
+                SelectFields.CommandText = "SELECT ColumnName"+i+" from Category where ID=" + Categories.ClickedCategoryID + "";
                 if (SelectFields.ExecuteScalar().ToString() != "")
                     CategoryGridView.Columns[i + 3].HeaderText = SelectFields.ExecuteScalar().ToString();
                 else CategoryGridView.Columns[i + 3].Visible = false;
@@ -50,7 +50,7 @@ namespace LMASS
         private void CategoryGridView_DefaultValuesNeeded(object sender,System.Windows.Forms.DataGridViewRowEventArgs e)
         {
             for (int i = 0; i < CategoryGridView.RowCount; i++)
-                CategoryGridView.Rows[i].Cells[0].Value = Categories.CatID;
+                CategoryGridView.Rows[i].Cells[0].Value = Categories.ClickedCategoryID;
           
         }
 
@@ -110,14 +110,14 @@ namespace LMASS
                                     p[i] = "";
 
                             //вставляем данные
-                            Import.CommandText = "INSERT INTO Person (FIO, Email,CategoryID, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10) values ('" + f + "', '" + m + "', '" + Categories.CatID + "', '" + p[1] + "','" + p[2] + "','" + p[3] + "','" + p[4] + "','" + p[5] + "','" + p[6] + "','" + p[7] + "','" + p[8] + "','" + p[9] + "','" + p[10] + "')";
+                            Import.CommandText = "INSERT INTO Person (FIO, Email,CategoryID, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10) values ('" + f + "', '" + m + "', '" + Categories.ClickedCategoryID + "', '" + p[1] + "','" + p[2] + "','" + p[3] + "','" + p[4] + "','" + p[5] + "','" + p[6] + "','" + p[7] + "','" + p[8] + "','" + p[9] + "','" + p[10] + "')";
                             Import.ExecuteScalar();
 
                         }
-                        MessageBox.Show("Импорт выолнен!");
+                        MessageBox.Show("Импорт выполнен!");
                         ThisConnection.Close();
                         //перезагрузка таблицы
-                        this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.CatID);
+                        this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.ClickedCategoryID);
                     }
                 }
             }

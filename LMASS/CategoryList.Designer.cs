@@ -66,6 +66,7 @@
             this.CategoryListGridView.AutoGenerateColumns = false;
             this.CategoryListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CategoryListGridView.BackgroundColor = System.Drawing.Color.MintCream;
+            this.CategoryListGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoryListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryListGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,

@@ -1,54 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMASS
 {
     public partial class Categories : Form
     {
+        public static int ClickedCategoryID;//ID выбранной нажатием категории для дальнейшего просмотра
         public Categories()
         {
             InitializeComponent();
-            this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-        }         
-        public static int CatID;//ID выбранной нажатием категории для дальнейшего просмотра
+        }       
         private void Categories_Load(object sender, EventArgs e)
         {
             this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.categoryTableAdapter.Fill(this.categoriesDataSet.Category);
             this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         }
-      
         private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)//просмотр категории по нажатию
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)//если клик на ID в строке
             {
-                this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
                 this.CategoriesGridView.CommitEdit(DataGridViewDataErrorContexts.Commit); //Сохраним в кэш данные
-                CatID = Convert.ToInt32(CategoriesGridView.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
-                Form frm = new Category();
-              
+                ClickedCategoryID = Convert.ToInt32(CategoriesGridView.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
+                Form frm = new Category();              
                 frm.Show();   //открываем просмотр категории
-                this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)//Сохранить изменения
         {
             try
             {
                 this.categoryBindingSource.EndEdit();
                 this.categoryTableAdapter.Update(this.categoriesDataSet.Category);
-                MessageBox.Show("Изменения в базе данных выполнены!",
-                  "Уведомление о результатах", MessageBoxButtons.OK);
+                MessageBox.Show("Изменения в базе данных выполнены!","Уведомление о результатах", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {

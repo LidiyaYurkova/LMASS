@@ -19,6 +19,7 @@ namespace LMASS
         string AttachFile = "";//файл вложения
         string DatabasePath = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LMASSDatabase.mdf;Max Pool Size=5000;Integrated Security=True";
         bool allIsRight = true;
+        string letter;
         public Message()
         {
             InitializeComponent();
@@ -50,8 +51,7 @@ namespace LMASS
                 btnSend.Enabled = true;
             }
         }
-
-        //выборка всех доп полей
+        //выборка всех доп полей   
         private void GetAllFields()
         {
             SqlConnection ThisConnection = new SqlConnection(DatabasePath);
@@ -74,7 +74,6 @@ namespace LMASS
                 rtbLetter.LoadFile(dialog.FileName, RichTextBoxStreamType.PlainText);
 
         }
-
         //сохранение шаблона
         private void btnSaveTemplate_Click(object sender, EventArgs e)
         {
@@ -89,7 +88,6 @@ namespace LMASS
 
 
         }
-
         //выбор доп полей
         private void btnAddValues_Click(object sender, EventArgs e)
         {
@@ -98,15 +96,12 @@ namespace LMASS
             form.Closing += FieldsListClosing;  //обработка закрытия формы
 
         }
-
         //при закрытии фомы списка полей
         private void FieldsListClosing(object sender, EventArgs e)
         {
             for (int i = 0; i < FieldsList.SelectedFields.Count; i++)
                 rtbLetter.Text += FieldsList.SelectedFields[i] + " ";
         }
-
-
         //загрузка вложения
         private void btnAddFile_Click(object sender, EventArgs e)
         {
@@ -119,14 +114,32 @@ namespace LMASS
                    lblFiles.Text += Path.GetFileNameWithoutExtension(fileNames[i])+", ";
             }
         }
+        private void tbTheme_Enter(object sender, EventArgs e)
+        {
+            if (tbTheme.Text == "Тема письма")
+                tbTheme.Text = "";
+        }
 
+        private void tbTheme_Leave(object sender, EventArgs e)
+        {
+            if (tbTheme.Text == "")
+                tbTheme.Text = "Тема письма";
+        }
+        struct Interval
+        {
+            public int from;
+            public int num;
+        }
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //отправка
         private void btnSend_Click(object sender, EventArgs e)
         {
+            allIsRight = true;
             try
             {
+                letter = rtbLetter.Text.Replace("\n", "<br>");
                 AllFields.Clear();
                 Emails.Clear();
 
@@ -140,7 +153,13 @@ namespace LMASS
                 SelectEmails = ThisConnection.CreateCommand();
                 SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
 
-                GetAllFields();//выбираем все доп поля категории
+                if (FieldsList.AllFields.Count == 0)
+                {
+                    GetAllFields();//выбираем все доп поля категории
+                }
+                else AllFields = FieldsList.AllFields;
+
+
                 for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)//цикл по выбранным категориям
                 {                      
                     SelectEmails.CommandText = "SELECT Email FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i];
@@ -153,12 +172,11 @@ namespace LMASS
                     }
                     thisReader.Close();
                     ThisConnection.Close();
-                    string htmlLetter = rtbLetter.Text;
-                    letter = htmlLetter.Replace("\n", "<br>");
+                
                    
                     ArrayList Threads = new ArrayList();//все до поля
                     int threadsNum = 0;
-                    int msgNum = 10;                  
+                    int msgNum = 5;                  
 
                     if ((Emails.Count % msgNum) > 0)//если кол-во адресов в списке IPs не кратно кол-ву адресов для проверки одним потоком
                         threadsNum = Emails.Count / msgNum + 1;//то кол-во потоков = кол-во адресов в списке / кол-во адресов для проверки одним потоком +1
@@ -204,13 +222,8 @@ namespace LMASS
             }
 
         }
-        struct Interval
-        {
-            public int from;
-            public int num;
-        }
-        string letter;
-         private  void sending(object context)
+    
+          private  void sending(object context)
         {
             try
             {
@@ -234,7 +247,7 @@ namespace LMASS
 
                     for (int i = first; i < last; i++)
                     {
-                        Command.CommandText = "  SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
+                        Command.CommandText = "SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
                         thisReader = Command.ExecuteReader();
                         thisReader.Read();
                         string currentLetter=letter;
@@ -242,7 +255,7 @@ namespace LMASS
                         currentLetter = currentLetter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
                         string x = thisReader["p" + (0 + 1)].ToString();
                         for (int j = 0; j < 10; j++)
-                            currentLetter = currentLetter.Replace(AllFields[j].ToString(), thisReader["p" + (j + 1)].ToString());//заменяем <>
+                            currentLetter = currentLetter.Replace(FieldsList.AllFields[j].ToString(), thisReader["p" + (j + 1)].ToString());//заменяем <>
 
 
                         to = new MailAddress(Emails[i].ToString());
@@ -254,7 +267,11 @@ namespace LMASS
                                 AttachFile = fileNames[f];
                                 m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
                             }
-                        m.Subject = tbTheme.Text;   // тема письма                        
+                        if(tbTheme.Text=="Тема письма")
+                        {
+                            m.Subject = "";
+                        }else m.Subject = tbTheme.Text;
+                         
                         m.Body = "<h2>" + currentLetter + "</h2>";// текст письма                        
                         m.IsBodyHtml = true;// письмо представляет код html                       
                         smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
@@ -284,19 +301,6 @@ namespace LMASS
 
                 }
             }
-        }
-
-        private void tbTheme_Enter(object sender, EventArgs e)
-        {
-            if (tbTheme.Text =="Тема письма")
-            tbTheme.Text = "";
-        }
-
-        private void tbTheme_Leave(object sender, EventArgs e)
-        {
-            if (tbTheme.Text == "")
-                tbTheme.Text = "Тема письма";
-        }
-    }
-    
+          }
+    }    
 }

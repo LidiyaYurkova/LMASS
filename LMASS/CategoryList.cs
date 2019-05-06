@@ -13,15 +13,15 @@ namespace LMASS
 {
     public partial class CategoryList : Form
     {
+        public static ArrayList CurrentCategoriesID = new ArrayList(); //список выбранных категорий
+        public static ArrayList CurrentCategoriesName = new ArrayList();
         public CategoryList()
         {
             InitializeComponent();
             this.CategoryListGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
         }
-        public static ArrayList CurrentCategoriesID = new ArrayList(); //список выбранных категорий
-        public static ArrayList CurrentCategoriesName = new ArrayList();
-
+   
         private void CategoryList_Load(object sender, EventArgs e)
         {
             this.CategoryListGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -31,7 +31,6 @@ namespace LMASS
             CurrentCategoriesName.Clear();
 
         }
-
         //При клике грида
         private void CategoryListGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {            
@@ -48,7 +47,6 @@ namespace LMASS
             }
         }
 
-        //ok
         private void btnOk_Click(object sender, EventArgs e)
         {
             this.Close();

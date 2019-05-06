@@ -39,7 +39,7 @@
             this.btnOk.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnOk.ForeColor = System.Drawing.Color.Black;
+            this.btnOk.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnOk.Location = new System.Drawing.Point(48, 265);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(151, 32);

@@ -1349,18 +1349,18 @@ SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM 
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM d" +
-                "bo.Person where CategoryID=@CatID";
+                "bo.Person where CategoryID=@CategoryID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CatID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CategoryDataSet.PersonDataTable dataTable, int CatID) {
+        public virtual int Fill(CategoryDataSet.PersonDataTable dataTable, int CategoryID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CatID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CategoryID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1372,9 +1372,9 @@ SELECT ID, FIO, Email, CategoryID, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CategoryDataSet.PersonDataTable GetData(int CatID) {
+        public virtual CategoryDataSet.PersonDataTable GetData(int CategoryID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CatID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CategoryID));
             CategoryDataSet.PersonDataTable dataTable = new CategoryDataSet.PersonDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
