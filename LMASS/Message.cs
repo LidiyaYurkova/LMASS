@@ -285,7 +285,18 @@ namespace LMASS
                 }
             }
         }
-              
+
+        private void tbTheme_Enter(object sender, EventArgs e)
+        {
+            if (tbTheme.Text =="Тема письма")
+            tbTheme.Text = "";
+        }
+
+        private void tbTheme_Leave(object sender, EventArgs e)
+        {
+            if (tbTheme.Text == "")
+                tbTheme.Text = "Тема письма";
+        }
     }
     
 }

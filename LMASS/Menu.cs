@@ -18,29 +18,23 @@ namespace LMASS
         }
 
         //рассылка
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMessage_Click(object sender, EventArgs e)
         {
             Form frm = new Message();
             frm.Show();
            
         }
         //категории
-        private void button2_Click(object sender, EventArgs e)
+    
+        private void Menu_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnCategories_Click(object sender, EventArgs e)
         {
             Form frm = new Categories();
             frm.Show();
-            
-        }
-        //выход
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            this.ControlBox = false;
-
         }
     }
 }

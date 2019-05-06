@@ -43,13 +43,13 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnOk.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnOk.BackColor = System.Drawing.Color.MintCream;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnOk.FlatAppearance.BorderSize = 0;
-            this.btnOk.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnOk.ForeColor = System.Drawing.Color.Black;
-            this.btnOk.Location = new System.Drawing.Point(102, 321);
+            this.btnOk.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnOk.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnOk.Location = new System.Drawing.Point(102, 309);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(83, 30);
             this.btnOk.TabIndex = 1;
@@ -65,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryListGridView.AutoGenerateColumns = false;
             this.CategoryListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CategoryListGridView.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.CategoryListGridView.BackgroundColor = System.Drawing.Color.MintCream;
             this.CategoryListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoryListGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -74,7 +74,7 @@
             this.CategoryListGridView.DataSource = this.categoryBindingSource;
             this.CategoryListGridView.Location = new System.Drawing.Point(0, 0);
             this.CategoryListGridView.Name = "CategoryListGridView";
-            this.CategoryListGridView.Size = new System.Drawing.Size(286, 321);
+            this.CategoryListGridView.Size = new System.Drawing.Size(286, 303);
             this.CategoryListGridView.TabIndex = 2;
             this.CategoryListGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryListGridView_CellContentClick);
             // 
@@ -117,8 +117,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(286, 351);
             this.Controls.Add(this.CategoryListGridView);
             this.Controls.Add(this.btnOk);

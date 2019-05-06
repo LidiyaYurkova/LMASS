@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1146327.ico</ApplicationIcon>
+    <ApplicationIcon>комета.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -180,6 +180,7 @@
     <None Include="CategoryListDatabaseDataSet.xss">
       <DependentUpon>CategoryListDatabaseDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,6 +208,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>LMASSDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="MetroFramework.txt" />
+    <Content Include="комета.ico" />
+    <Content Include="ракета.ico" />
     <None Include="Resources\background.jpg" />
   </ItemGroup>
   <ItemGroup>

@@ -46,13 +46,13 @@
             // 
             // btnChooseCategory
             // 
-            this.btnChooseCategory.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnChooseCategory.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnChooseCategory.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnChooseCategory.ForeColor = System.Drawing.Color.Black;
-            this.btnChooseCategory.Location = new System.Drawing.Point(13, 12);
+            this.btnChooseCategory.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnChooseCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChooseCategory.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnChooseCategory.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnChooseCategory.Location = new System.Drawing.Point(13, 13);
             this.btnChooseCategory.Name = "btnChooseCategory";
-            this.btnChooseCategory.Size = new System.Drawing.Size(86, 49);
+            this.btnChooseCategory.Size = new System.Drawing.Size(102, 49);
             this.btnChooseCategory.TabIndex = 0;
             this.btnChooseCategory.Text = "Выберите категории";
             this.btnChooseCategory.UseVisualStyleBackColor = false;
@@ -62,38 +62,45 @@
             // 
             this.tbTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTheme.BackColor = System.Drawing.SystemColors.Window;
-            this.tbTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbTheme.BackColor = System.Drawing.Color.White;
+            this.tbTheme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTheme.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.tbTheme.ForeColor = System.Drawing.Color.Black;
             this.tbTheme.Location = new System.Drawing.Point(13, 67);
             this.tbTheme.Name = "tbTheme";
-            this.tbTheme.Size = new System.Drawing.Size(454, 23);
+            this.tbTheme.Size = new System.Drawing.Size(593, 23);
             this.tbTheme.TabIndex = 2;
             this.tbTheme.Text = "Тема письма";
+            this.tbTheme.Enter += new System.EventHandler(this.tbTheme_Enter);
+            this.tbTheme.Leave += new System.EventHandler(this.tbTheme_Leave);
             // 
             // rtbLetter
             // 
             this.rtbLetter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbLetter.BackColor = System.Drawing.SystemColors.Window;
-            this.rtbLetter.Font = new System.Drawing.Font("Arial", 9F);
+            this.rtbLetter.BackColor = System.Drawing.Color.White;
+            this.rtbLetter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtbLetter.Font = new System.Drawing.Font("Arial", 10F);
+            this.rtbLetter.ForeColor = System.Drawing.Color.Black;
             this.rtbLetter.Location = new System.Drawing.Point(13, 93);
             this.rtbLetter.Name = "rtbLetter";
-            this.rtbLetter.Size = new System.Drawing.Size(453, 424);
+            this.rtbLetter.Size = new System.Drawing.Size(593, 423);
             this.rtbLetter.TabIndex = 3;
             this.rtbLetter.Text = "";
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSend.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnSend.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnSend.BackColor = System.Drawing.Color.MintCream;
             this.btnSend.Enabled = false;
-            this.btnSend.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnSend.ForeColor = System.Drawing.Color.Black;
-            this.btnSend.Location = new System.Drawing.Point(13, 523);
+            this.btnSend.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnSend.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnSend.Location = new System.Drawing.Point(13, 530);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(92, 46);
+            this.btnSend.Size = new System.Drawing.Size(108, 46);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "Отправить";
             this.btnSend.UseVisualStyleBackColor = false;
@@ -102,13 +109,13 @@
             // btnGetTemplate
             // 
             this.btnGetTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetTemplate.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnGetTemplate.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnGetTemplate.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnGetTemplate.ForeColor = System.Drawing.Color.Black;
-            this.btnGetTemplate.Location = new System.Drawing.Point(287, 12);
+            this.btnGetTemplate.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnGetTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetTemplate.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnGetTemplate.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnGetTemplate.Location = new System.Drawing.Point(405, 13);
             this.btnGetTemplate.Name = "btnGetTemplate";
-            this.btnGetTemplate.Size = new System.Drawing.Size(86, 49);
+            this.btnGetTemplate.Size = new System.Drawing.Size(96, 49);
             this.btnGetTemplate.TabIndex = 5;
             this.btnGetTemplate.Text = "Загрузить шаблон";
             this.btnGetTemplate.UseVisualStyleBackColor = false;
@@ -117,13 +124,13 @@
             // btnSaveTemplate
             // 
             this.btnSaveTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveTemplate.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnSaveTemplate.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnSaveTemplate.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnSaveTemplate.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveTemplate.Location = new System.Drawing.Point(380, 12);
+            this.btnSaveTemplate.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnSaveTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveTemplate.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnSaveTemplate.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnSaveTemplate.Location = new System.Drawing.Point(507, 13);
             this.btnSaveTemplate.Name = "btnSaveTemplate";
-            this.btnSaveTemplate.Size = new System.Drawing.Size(86, 49);
+            this.btnSaveTemplate.Size = new System.Drawing.Size(99, 49);
             this.btnSaveTemplate.TabIndex = 6;
             this.btnSaveTemplate.Text = "Сохранить шаблон";
             this.btnSaveTemplate.UseVisualStyleBackColor = false;
@@ -132,14 +139,15 @@
             // btnAddValues
             // 
             this.btnAddValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddValues.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnAddValues.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.btnAddValues.BackColor = System.Drawing.Color.MintCream;
             this.btnAddValues.Enabled = false;
-            this.btnAddValues.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnAddValues.ForeColor = System.Drawing.Color.Black;
-            this.btnAddValues.Location = new System.Drawing.Point(380, 523);
+            this.btnAddValues.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnAddValues.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddValues.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnAddValues.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnAddValues.Location = new System.Drawing.Point(507, 530);
             this.btnAddValues.Name = "btnAddValues";
-            this.btnAddValues.Size = new System.Drawing.Size(86, 46);
+            this.btnAddValues.Size = new System.Drawing.Size(99, 46);
             this.btnAddValues.TabIndex = 17;
             this.btnAddValues.Text = "Вставить поля";
             this.btnAddValues.UseVisualStyleBackColor = false;
@@ -156,13 +164,14 @@
             // btnAddFile
             // 
             this.btnAddFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddFile.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnAddFile.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnAddFile.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.btnAddFile.ForeColor = System.Drawing.Color.Black;
-            this.btnAddFile.Location = new System.Drawing.Point(108, 523);
+            this.btnAddFile.BackColor = System.Drawing.Color.MintCream;
+            this.btnAddFile.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnAddFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddFile.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnAddFile.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnAddFile.Location = new System.Drawing.Point(124, 530);
             this.btnAddFile.Name = "btnAddFile";
-            this.btnAddFile.Size = new System.Drawing.Size(95, 46);
+            this.btnAddFile.Size = new System.Drawing.Size(108, 46);
             this.btnAddFile.TabIndex = 19;
             this.btnAddFile.Text = "Прикрепить файл";
             this.btnAddFile.UseVisualStyleBackColor = false;
@@ -176,36 +185,36 @@
             // 
             this.lblCategories.AutoSize = true;
             this.lblCategories.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategories.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic);
-            this.lblCategories.ForeColor = System.Drawing.Color.Black;
-            this.lblCategories.Location = new System.Drawing.Point(105, 30);
-            this.lblCategories.MaximumSize = new System.Drawing.Size(150, 13);
+            this.lblCategories.Font = new System.Drawing.Font("Arial", 10F);
+            this.lblCategories.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblCategories.Location = new System.Drawing.Point(121, 29);
+            this.lblCategories.MaximumSize = new System.Drawing.Size(200, 20);
             this.lblCategories.Name = "lblCategories";
-            this.lblCategories.Size = new System.Drawing.Size(0, 13);
+            this.lblCategories.Size = new System.Drawing.Size(0, 16);
             this.lblCategories.TabIndex = 20;
             // 
             // lblFiles
             // 
-            this.lblFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFiles.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblFiles.AutoSize = true;
             this.lblFiles.BackColor = System.Drawing.Color.Transparent;
-            this.lblFiles.Font = new System.Drawing.Font("Agency FB", 10F);
-            this.lblFiles.ForeColor = System.Drawing.Color.Black;
-            this.lblFiles.Location = new System.Drawing.Point(209, 539);
-            this.lblFiles.MaximumSize = new System.Drawing.Size(150, 13);
+            this.lblFiles.Font = new System.Drawing.Font("Arial", 10F);
+            this.lblFiles.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblFiles.Location = new System.Drawing.Point(238, 545);
+            this.lblFiles.MaximumSize = new System.Drawing.Size(200, 20);
             this.lblFiles.Name = "lblFiles";
-            this.lblFiles.Size = new System.Drawing.Size(11, 13);
+            this.lblFiles.Size = new System.Drawing.Size(0, 16);
             this.lblFiles.TabIndex = 21;
-            this.lblFiles.Text = " ";
             // 
             // lblSending
             // 
             this.lblSending.AutoSize = true;
-            this.lblSending.BackColor = System.Drawing.Color.Crimson;
-            this.lblSending.Font = new System.Drawing.Font("Agency FB", 50F);
-            this.lblSending.Location = new System.Drawing.Point(44, 247);
+            this.lblSending.BackColor = System.Drawing.Color.White;
+            this.lblSending.Font = new System.Drawing.Font("Monotype Corsiva", 70F, System.Drawing.FontStyle.Bold);
+            this.lblSending.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblSending.Location = new System.Drawing.Point(74, 237);
             this.lblSending.Name = "lblSending";
-            this.lblSending.Size = new System.Drawing.Size(380, 79);
+            this.lblSending.Size = new System.Drawing.Size(453, 113);
             this.lblSending.TabIndex = 22;
             this.lblSending.Text = "Рассылка...";
             this.lblSending.Visible = false;
@@ -214,11 +223,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(481, 571);
-            this.Controls.Add(this.lblSending);
+            this.BackColor = System.Drawing.Color.MintCream;
+            this.ClientSize = new System.Drawing.Size(621, 588);
             this.Controls.Add(this.lblFiles);
+            this.Controls.Add(this.lblSending);
             this.Controls.Add(this.lblCategories);
             this.Controls.Add(this.btnAddFile);
             this.Controls.Add(this.label2);

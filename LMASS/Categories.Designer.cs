@@ -57,13 +57,11 @@
             // btnSave
             // 
             resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnSave.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.BackColor = System.Drawing.Color.MintCream;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -72,7 +70,7 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.label1.Name = "label1";
             // 
             // openFileDialog1
@@ -84,7 +82,7 @@
             resources.ApplyResources(this.CategoriesGridView, "CategoriesGridView");
             this.CategoriesGridView.AutoGenerateColumns = false;
             this.CategoriesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CategoriesGridView.BackgroundColor = System.Drawing.Color.OldLace;
+            this.CategoriesGridView.BackgroundColor = System.Drawing.Color.MintCream;
             this.CategoriesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -194,8 +192,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaGreen;
-            this.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.CategoriesGridView);

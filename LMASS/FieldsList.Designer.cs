@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FieldsList));
             this.btnOk = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -36,9 +35,10 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnOk.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnOk.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnOk.BackColor = System.Drawing.Color.MintCream;
+            this.btnOk.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.btnOk.ForeColor = System.Drawing.Color.Black;
             this.btnOk.Location = new System.Drawing.Point(48, 265);
             this.btnOk.Name = "btnOk";
@@ -52,11 +52,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImage = global::LMASS.Properties.Resources.background;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(255, 300);
             this.Controls.Add(this.btnOk);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FieldsList";

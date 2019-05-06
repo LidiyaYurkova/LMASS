@@ -29,81 +29,66 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblChoose = new System.Windows.Forms.Label();
             this.btnMessage = new System.Windows.Forms.Button();
             this.btnCategories = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblChoose
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(19, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Выберите действие";
+            this.lblChoose.AutoSize = true;
+            this.lblChoose.BackColor = System.Drawing.Color.Transparent;
+            this.lblChoose.Font = new System.Drawing.Font("Monotype Corsiva", 15F, System.Drawing.FontStyle.Bold);
+            this.lblChoose.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblChoose.Location = new System.Drawing.Point(15, 16);
+            this.lblChoose.Name = "lblChoose";
+            this.lblChoose.Size = new System.Drawing.Size(173, 24);
+            this.lblChoose.TabIndex = 0;
+            this.lblChoose.Text = "Выберите действие";
             // 
             // btnMessage
             // 
-            this.btnMessage.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnMessage.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnMessage.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
-            this.btnMessage.ForeColor = System.Drawing.Color.Black;
-            this.btnMessage.Location = new System.Drawing.Point(26, 65);
+            this.btnMessage.BackColor = System.Drawing.Color.MintCream;
+            this.btnMessage.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMessage.Font = new System.Drawing.Font("Arial", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnMessage.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnMessage.Location = new System.Drawing.Point(16, 64);
             this.btnMessage.Name = "btnMessage";
-            this.btnMessage.Size = new System.Drawing.Size(160, 44);
+            this.btnMessage.Size = new System.Drawing.Size(169, 45);
             this.btnMessage.TabIndex = 1;
             this.btnMessage.Text = "Рассылка";
             this.btnMessage.UseVisualStyleBackColor = false;
-            this.btnMessage.Click += new System.EventHandler(this.button1_Click);
+            this.btnMessage.Click += new System.EventHandler(this.btnMessage_Click);
             // 
             // btnCategories
             // 
-            this.btnCategories.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnCategories.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.btnCategories.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCategories.ForeColor = System.Drawing.Color.Black;
-            this.btnCategories.Location = new System.Drawing.Point(26, 115);
+            this.btnCategories.BackColor = System.Drawing.Color.MintCream;
+            this.btnCategories.FlatAppearance.BorderColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategories.Font = new System.Drawing.Font("Arial", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnCategories.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnCategories.Location = new System.Drawing.Point(16, 115);
             this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Size = new System.Drawing.Size(158, 45);
+            this.btnCategories.Size = new System.Drawing.Size(169, 45);
             this.btnCategories.TabIndex = 2;
             this.btnCategories.Text = "Категории";
             this.btnCategories.UseVisualStyleBackColor = false;
-            this.btnCategories.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button3.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.button3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(26, 195);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
             // 
             // Menu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImage = global::LMASS.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(209, 237);
-            this.Controls.Add(this.button3);
+            this.BackColor = System.Drawing.Color.MintCream;
+            this.ClientSize = new System.Drawing.Size(209, 200);
             this.Controls.Add(this.btnCategories);
             this.Controls.Add(this.btnMessage);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblChoose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Menu";
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.Menu_Load);
@@ -114,9 +99,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblChoose;
         private System.Windows.Forms.Button btnMessage;
         private System.Windows.Forms.Button btnCategories;
-        private System.Windows.Forms.Button button3;
     }
 }
