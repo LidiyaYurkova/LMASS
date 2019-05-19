@@ -247,40 +247,41 @@ namespace LMASS
 
                     for (int i = first; i < last; i++)
                     {
-                        Command.CommandText = "SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
-                        thisReader = Command.ExecuteReader();
-                        thisReader.Read();
-                        string currentLetter=letter;
-                        currentLetter = currentLetter.Replace("<ФИО>", thisReader["FIO"].ToString());//заменяем <ФИО>
-                        currentLetter = currentLetter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
-                        string x = thisReader["p" + (0 + 1)].ToString();
-                        for (int j = 0; j < 10; j++)
-                            currentLetter = currentLetter.Replace(FieldsList.AllFields[j].ToString(), thisReader["p" + (j + 1)].ToString());//заменяем <>
+                            Command.CommandText = "SELECT FIO, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10 FROM Person WHERE Email= '" + Emails[i] + "' AND CategoryID='" + CurrentCategoryID + "'"; //
+                            thisReader = Command.ExecuteReader();
+                            thisReader.Read();
+                            string currentLetter = letter;
+                            currentLetter = currentLetter.Replace("<ФИО>", thisReader["FIO"].ToString());//заменяем <ФИО>
+                            currentLetter = currentLetter.Replace("<Адрес>", Emails[i].ToString());//заменяем <Адрес>
+                            string x = thisReader["p" + (0 + 1)].ToString();
+                            for (int j = 0; j < 10; j++)
+                                currentLetter = currentLetter.Replace(AllFields[j].ToString(), thisReader["p" + (j + 1)].ToString());//заменяем <>
 
 
-                        to = new MailAddress(Emails[i].ToString());
-                        m = new MailMessage(from, to);
+                            to = new MailAddress(Emails[i].ToString());
+                            m = new MailMessage(from, to);
 
-                        if (fileNames != null)//вложение, если есть
-                            for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                            if (fileNames != null)//вложение, если есть
+                                for (int f = 0; f < fileNames.Length; f++)//перебираем файлы
+                                {
+                                    AttachFile = fileNames[f];
+                                    m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                                }
+                            if (tbTheme.Text == "Тема письма")
                             {
-                                AttachFile = fileNames[f];
-                                m.Attachments.Add(new Attachment(AttachFile));//добавляем их в письмо
+                                m.Subject = "";
                             }
-                        if(tbTheme.Text=="Тема письма")
-                        {
-                            m.Subject = "";
-                        }else m.Subject = tbTheme.Text;
-                         
-                        m.Body = "<h2>" + currentLetter + "</h2>";// текст письма                        
-                        m.IsBodyHtml = true;// письмо представляет код html                       
-                        smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
-                        smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
-                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        smtp.EnableSsl = true;
-                        smtp.Send(m);
-                        thisReader.Close();
+                            else m.Subject = tbTheme.Text;
 
+                            m.Body = "<h2>" + currentLetter + "</h2>";// текст письма                        
+                            m.IsBodyHtml = true;// письмо представляет код html                       
+                            smtp = new SmtpClient("smtp." + LMASS.Enter.Service, 587); // адрес smtp-сервера и порт, с которого будем отправлять письмо
+                            smtp.Credentials = new NetworkCredential(LMASS.Enter.Login, LMASS.Enter.Password);// логин и пароль
+                            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            smtp.EnableSsl = true;
+                            smtp.Send(m);
+                            thisReader.Close();
+                        
                     }
                 }
             }

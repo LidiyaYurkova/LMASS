@@ -53,14 +53,18 @@ namespace LMASS
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
-               //запоминаем логин, пароль и сервис
-                Login = tbLogin.Text;
-                Password = tbPassword.Text;
-                Service = Login.Substring(Login.IndexOf('@') + 1);
-                Form frm = new Menu();
-                this.Hide();
-                frm.Show();
-                frm.Closing += MenuClosing;        
+            //запоминаем логин, пароль и сервис
+            Login = tbLogin.Text;
+            Password = tbPassword.Text;
+            Service = Login.Substring(Login.IndexOf('@') + 1);
+            if (Service == "inbox.ru" || Service == "list.ru" || Service == "bk.ru")
+            {
+                Service = "mail.ru";
+            }
+            Form frm = new Menu();
+            this.Hide();
+            frm.Show();
+            frm.Closing += MenuClosing;        
         }
         //при закрытии фомы Menu
         private void MenuClosing(object sender, EventArgs e)

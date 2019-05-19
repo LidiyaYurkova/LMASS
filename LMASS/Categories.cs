@@ -23,8 +23,11 @@ namespace LMASS
             {
                 this.CategoriesGridView.CommitEdit(DataGridViewDataErrorContexts.Commit); //Сохраним в кэш данные
                 ClickedCategoryID = Convert.ToInt32(CategoriesGridView.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
-                Form frm = new Category();              
-                frm.Show();   //открываем просмотр категории
+                if (ClickedCategoryID >= 0)
+                {
+                    Form frm = new Category();
+                    frm.Show();   //открываем просмотр категории
+                }
             }
         }
         private void btnSave_Click(object sender, EventArgs e)//Сохранить изменения
