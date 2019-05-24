@@ -24,7 +24,7 @@ namespace LMASS
         private void Category_Load(object sender, EventArgs e)
         {
             this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.ClickedCategoryID);
+            this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.ClickedCategoryID);//заполняем с учётом ID выбранной категории
             this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
            
        

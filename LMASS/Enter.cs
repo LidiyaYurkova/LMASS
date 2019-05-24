@@ -11,19 +11,19 @@ namespace LMASS
             InitializeComponent();
         }
         private void Enter_Load(object sender, EventArgs e)
-        {
-            ActiveControl = lblWelcome;
+        {   
+            ActiveControl = lblWelcome;//снимаем фокус с фолей ввода
         }
         private void tbPassword_TextChanged(object sender, EventArgs e)
         {
             if (tbLogin.Text != "Email" && tbPassword.Text != "" && tbPassword.Text != "Пароль")
-                btnOk.Enabled = true;
+                btnOk.Enabled = true;//если введены все данные, кнопка входа доступна
         }
         private void tbLogin_Enter(object sender, EventArgs e)
         {
             if (tbLogin.Text == "Email")
             {
-                tbLogin.Text = "";
+                tbLogin.Text = "";//при клике на поле убираем подсказку
             }
         }
         private void tbLogin_Leave(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace LMASS
             if (tbLogin.Text == "")
             {
                 tbLogin.Text = "Email";
-                btnOk.Enabled = false;
+                btnOk.Enabled = false;//если адрес пустой, вернем додсказку и заблокируем кнопку входа
             }
         }
         private void tbPassword_Enter(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace LMASS
             if (tbPassword.Text == "Пароль")
             {
                 tbPassword.Text = "";
-                tbPassword.PasswordChar = '*';
+                tbPassword.PasswordChar = '*';//убираем подсказку при клике
             }
         }
         private void tbPassword_Leave(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace LMASS
             {
                 tbPassword.PasswordChar = '\0';
                 tbPassword.Text = "Пароль";
-                btnOk.Enabled = false;
+                btnOk.Enabled = false;//если пароль пустой, вернем подсказку и заблокируем кнопку
             }
         }
         private void btnOk_Click(object sender, EventArgs e)
@@ -59,14 +59,14 @@ namespace LMASS
             Service = Login.Substring(Login.IndexOf('@') + 1);
             if (Service == "inbox.ru" || Service == "list.ru" || Service == "bk.ru")
             {
-                Service = "mail.ru";
+                Service = "mail.ru";//если сервис mail.ru но с другим именем, запомним нужный
             }
             Form frm = new Menu();
-            this.Hide();
-            frm.Show();
-            frm.Closing += MenuClosing;        
+            this.Hide();//скрываем окно
+            frm.Show();//отображаем меню
+            frm.Closing += MenuClosing;//обработчик закрытия меню   
         }
-        //при закрытии фомы Menu
+        //при закрытии фомы Menu - выход
         private void MenuClosing(object sender, EventArgs e)
         {
             Application.Exit();

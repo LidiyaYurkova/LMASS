@@ -14,7 +14,7 @@ namespace LMASS
         private void Categories_Load(object sender, EventArgs e)
         {
             this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.categoryTableAdapter.Fill(this.categoriesDataSet.Category);
+            this.categoryTableAdapter.Fill(this.categoriesDataSet.Category);//заполняем грид
             this.CategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         }
         private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)//просмотр категории по нажатию
@@ -34,8 +34,8 @@ namespace LMASS
         {
             try
             {
-                this.categoryBindingSource.EndEdit();
-                this.categoryTableAdapter.Update(this.categoriesDataSet.Category);
+                this.categoryBindingSource.EndEdit();//завершаем редактирование
+                this.categoryTableAdapter.Update(this.categoriesDataSet.Category);//обновляем БД
                 MessageBox.Show("Изменения в базе данных выполнены!","Уведомление о результатах", MessageBoxButtons.OK);
             }
             catch (Exception ex)

@@ -54,7 +54,7 @@
             this.btnChooseCategory.Name = "btnChooseCategory";
             this.btnChooseCategory.Size = new System.Drawing.Size(102, 49);
             this.btnChooseCategory.TabIndex = 0;
-            this.btnChooseCategory.Text = "Выберите категории";
+            this.btnChooseCategory.Text = "Выбрать категории";
             this.btnChooseCategory.UseVisualStyleBackColor = false;
             this.btnChooseCategory.Click += new System.EventHandler(this.btnChooseCategory_Click);
             // 

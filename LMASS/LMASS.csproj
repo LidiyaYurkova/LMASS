@@ -199,7 +199,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>LMASSDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="MetroFramework.txt" />
     <Content Include="комета.ico" />
     <Content Include="ракета.ico" />
   </ItemGroup>
