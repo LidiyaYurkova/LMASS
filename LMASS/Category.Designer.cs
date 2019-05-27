@@ -1,6 +1,6 @@
 ﻿namespace LMASS
 {
-    partial class Category
+    partial class CargoryAddressees
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Category));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CargoryAddressees));
             this.button1 = new System.Windows.Forms.Button();
             this.CategoryGridView = new System.Windows.Forms.DataGridView();
             this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -237,7 +237,7 @@
             // 
             this.personTableAdapter.ClearBeforeFill = true;
             // 
-            // Category
+            // CargoryAddressees
             // 
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(752, 261);
@@ -245,8 +245,8 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.CategoryGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Category";
-            this.Text = "Категория";
+            this.Name = "CargoryAddressees";
+            this.Text = "Адресаты категории";
             this.Load += new System.EventHandler(this.Category_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CategoryGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();

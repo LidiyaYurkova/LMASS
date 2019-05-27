@@ -25,7 +25,7 @@ namespace LMASS
                 ClickedCategoryID = Convert.ToInt32(CategoriesGridView.Rows[e.RowIndex].Cells[0].Value);//запоминаем ID выбранной категории
                 if (ClickedCategoryID >= 0)
                 {
-                    Form frm = new Category();
+                    Form frm = new CargoryAddressees();
                     frm.Show();   //открываем просмотр категории
                 }
             }

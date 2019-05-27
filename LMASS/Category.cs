@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace LMASS
 {
-    public partial class Category : Form
+    public partial class CargoryAddressees : Form
     {
-        public Category()
+        public CargoryAddressees()
         {
             InitializeComponent();
             this.CategoryGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -131,6 +132,22 @@ namespace LMASS
             public int num;
         }
 
+        //проверка переменных
+        private bool CheckValues(string text)
+        {
+            Regex regex = new Regex(@"<\w*>");
+            MatchCollection matches = regex.Matches(text);
+            foreach (Match match in matches)
+            {
+                if (match.Value != "<br>" && match.Value != "<ФИО>" && match.Value != "<Адрес>" && !AllFields.Contains(match.Value))
+                {
+                    MessageBox.Show("Переменной "+ match.Value + " нет в выбранной категории!", "Отправка");//если были ошибки
+                    return false;
+                }
+            }
+            return true;
+        }
+
         //отправка
         private void btnSend_Click(object sender, EventArgs e)
         {
@@ -138,71 +155,75 @@ namespace LMASS
             try
             {
                 letter = rtbLetter.Text.Replace("\n", "<br>");//переводим текст в HTML
+
                 AllFields.Clear();//очищаем списки (для повторного использования окна)
                 Emails.Clear();
 
-                lblSending.Visible = true;//отображаем надпись рассылки
-                btnSend.Enabled = false;//блокируем кнопку отправки
-
-                SqlConnection ThisConnection = new SqlConnection(DatabasePath);
-                ThisConnection.Open();
-                Thread masThread;
-                SqlCommand SelectEmails = new SqlCommand();
-                SelectEmails = ThisConnection.CreateCommand();
-                SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
 
                 if (FieldsList.AllFields.Count == 0)
                 {
                     GetAllFields();//выбираем все доп поля категории
                 }
                 else AllFields = FieldsList.AllFields;
+                if (CheckValues(letter))
+                {
 
+                    lblSending.Visible = true;//отображаем надпись рассылки
+                    btnSend.Enabled = false;//блокируем кнопку отправки
 
-                for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)//цикл по выбранным категориям
-                {                      
-                    SelectEmails.CommandText = "SELECT Email FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i];//выбираем адреса
-                    CurrentCategoryID = Convert.ToInt32(CategoryList.CurrentCategoriesID[i]);//запоминаем ID текущей категории
-                    thisReader = SelectEmails.ExecuteReader();//перебор адресов
-
-                    while (thisReader.Read())//выбираем адреса
+                    SqlConnection ThisConnection = new SqlConnection(DatabasePath);
+                    ThisConnection.Open();
+                    Thread masThread;
+                    SqlCommand SelectEmails = new SqlCommand();
+                    SelectEmails = ThisConnection.CreateCommand();
+                    SqlDataReader thisReader;//ридер результатов запроса для перебора адресатов
+                    for (int i = 0; i < CategoryList.CurrentCategoriesID.Count; i++)//цикл по выбранным категориям
                     {
-                        Emails.Add(thisReader["Email"].ToString());//заносим адреса в список
-                    }
-                    thisReader.Close();
-                    ThisConnection.Close();
-                                   
-                    ArrayList Threads = new ArrayList();//список потоков (для отслеживания завершения)
-                    int threadsNum = 0;//пока потоков 0
-                    int msgNum = 5;//кол-во писем для одноого потока       
+                        SelectEmails.CommandText = "SELECT Email FROM Person WHERE CategoryID= " + CategoryList.CurrentCategoriesID[i];//выбираем адреса
+                        CurrentCategoryID = Convert.ToInt32(CategoryList.CurrentCategoriesID[i]);//запоминаем ID текущей категории
+                        thisReader = SelectEmails.ExecuteReader();//перебор адресов
 
-                    if ((Emails.Count % msgNum) > 0)//если кол-во адресов в списке не кратно кол-ву писем для отправки одним потоком
-                        threadsNum = Emails.Count / msgNum + 1;//то кол-во потоков = кол-во адресов в списке / кол-во писем для отправки одним потоком +1
-                                                                //т.е. если у нас 11 адресов, а один поток считет по 5, мы ищем остаток от деления первого на второе, если остаток есть, значит нужно на один поток больше чем деление нацело
-                    else threadsNum = Emails.Count / msgNum;
+                        while (thisReader.Read())//выбираем адреса
+                        {
+                            Emails.Add(thisReader["Email"].ToString());//заносим адреса в список
+                        }
+                        thisReader.Close();
+                        ThisConnection.Close();
 
-                    for (int j = 0; j < threadsNum; j++)//после того, как мы определились с количеством потоков, в цикле создадим и запустим их.
-                    {
-                        Interval interval = new Interval();//создаем экземпляр структуры, которая содержит в себе необходимые данные для проверки
-                        interval.from = msgNum * j;//заносим индекс первого адреса для отправки текущим потоком.
-                                                        //Вычисляется он так: у нас есть количество адресов для отправки одним потоком, его мы умножим на индекс i и получим номер адреса в списке для отправки.
-                        interval.num = msgNum;//кол-во адресов для отправки одним потоком
-                        if (j == threadsNum - 1 && (Emails.Count % msgNum) > 0)//если мы создаём последний поток и остались свободные адреса (остаток от деления при вычислнении кол-ва потоков)
-                            interval.num = Emails.Count % msgNum;//то кол-во адресов для отправки = остатку
+                        ArrayList Threads = new ArrayList();//список потоков (для отслеживания завершения)
+                        int threadsNum = 0;//пока потоков 0
+                        int msgNum = 5;//кол-во писем для одноого потока       
 
-                        masThread = new Thread(sending);//инициализация потока с вызовом функции отправки
-                        masThread.Start(interval);//старт потока с передачей аргумента, в котором содержится индекс первого адреса и кол-во адресов 
-                        Threads.Add(masThread);//добавление потока в список потоков
+                        if ((Emails.Count % msgNum) > 0)//если кол-во адресов в списке не кратно кол-ву писем для отправки одним потоком
+                            threadsNum = Emails.Count / msgNum + 1;//то кол-во потоков = кол-во адресов в списке / кол-во писем для отправки одним потоком +1
+                                                                   //т.е. если у нас 11 адресов, а один поток считет по 5, мы ищем остаток от деления первого на второе, если остаток есть, значит нужно на один поток больше чем деление нацело
+                        else threadsNum = Emails.Count / msgNum;
 
-                    }
-                    foreach (Thread thread in Threads)//перебирая потоки в списке потоков
-                    {
+                        for (int j = 0; j < threadsNum; j++)//после того, как мы определились с количеством потоков, в цикле создадим и запустим их.
+                        {
+                            Interval interval = new Interval();//создаем экземпляр структуры, которая содержит в себе необходимые данные для проверки
+                            interval.from = msgNum * j;//заносим индекс первого адреса для отправки текущим потоком.
+                                                       //Вычисляется он так: у нас есть количество адресов для отправки одним потоком, его мы умножим на индекс i и получим номер адреса в списке для отправки.
+                            interval.num = msgNum;//кол-во адресов для отправки одним потоком
+                            if (j == threadsNum - 1 && (Emails.Count % msgNum) > 0)//если мы создаём последний поток и остались свободные адреса (остаток от деления при вычислнении кол-ва потоков)
+                                interval.num = Emails.Count % msgNum;//то кол-во адресов для отправки = остатку
+
+                            masThread = new Thread(sending);//инициализация потока с вызовом функции отправки
+                            masThread.Start(interval);//старт потока с передачей аргумента, в котором содержится индекс первого адреса и кол-во адресов 
+                            Threads.Add(masThread);//добавление потока в список потоков
+
+                        }
+                        foreach (Thread thread in Threads)//перебирая потоки в списке потоков
+                        {
                             thread.Join();//присоединяем каждый поток, т.е. основной поток программы будет ждать окончание работы всех порождённых присоединённых потоков
+                        }
                     }
+                    lblSending.Visible = false;//убираем надпись рассылки
+                    btnSend.Enabled = true;
+                    if (allIsRight) MessageBox.Show("Готово!", "Отправка");//если не было ошибок
+                    else MessageBox.Show("Произошла ошибка. Смотрите подробности в файле LMASS.log.", "Отправка");//если были ошибки
                 }
-                lblSending.Visible = false;//убираем надпись рассылки
-                btnSend.Enabled = true;   
-                if(allIsRight) MessageBox.Show("Готово!", "Отправка");//если не было ошибок
-                else MessageBox.Show("Произошла ошибка. Смотрите подробности в файле LMASS.log.", "Отправка");//если были ошибки
+               
             }
             catch (Exception ex)
             {
