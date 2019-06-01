@@ -100,6 +100,7 @@
             this.CategoriesGridView.DataSource = this.categoryBindingSource;
             this.CategoriesGridView.Name = "CategoriesGridView";
             this.CategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoriesGridView_CellContentClick);
+            this.CategoriesGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.CategoriesDataError);
             // 
             // dataGridViewTextBoxColumn1
             // 

@@ -95,6 +95,7 @@
             this.CategoryGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.CategoryGridView.Size = new System.Drawing.Size(755, 207);
             this.CategoryGridView.TabIndex = 0;
+            this.CategoryGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.GridDataError);
             // 
             // categoryIDDataGridViewTextBoxColumn
             // 

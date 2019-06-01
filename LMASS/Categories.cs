@@ -51,5 +51,10 @@ namespace LMASS
                 f1.Dispose();// освобождаем файл
             }
         }
+
+        private void CategoriesDataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+          
+        }
     }
 }

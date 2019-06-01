@@ -135,5 +135,9 @@ namespace LMASS
                 f1.Dispose();// освобождаем файл
             }
         }
+
+        private void GridDataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
     }
 }
