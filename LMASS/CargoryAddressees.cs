@@ -83,8 +83,8 @@ namespace LMASS
         //Импорт
         private void btnImport_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 SqlConnection ThisConnection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LMASSDatabase.mdf;Integrated Security=True");
                 ThisConnection.Open();
                 SqlCommand Import = ThisConnection.CreateCommand();
@@ -92,7 +92,8 @@ namespace LMASS
                 if (ImportFileDialog.ShowDialog() == DialogResult.OK) //выбор файла
                 {
 
-                    using (StreamReader sr = new StreamReader(ImportFileDialog.FileName))//берем путь к файлу
+                    using (StreamReader sr = new StreamReader(ImportFileDialog.FileName, Encoding.GetEncoding(1251)))//берем путь к файлу
+
                     {
                         string line;
                         while ((line = sr.ReadLine()) != null) //читаем строки
@@ -109,31 +110,32 @@ namespace LMASS
                                 for (int i = words.Length - 1; i <= 10; i++) //начинаем с певрого пустого
                                     p[i] = "";
 
-                            //вставляем данные
-                            Import.CommandText = "INSERT INTO Person (FIO, Email,CategoryID, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10) values ('" + f + "', '" + m + "', '" + Categories.ClickedCategoryID + "', '" + p[1] + "','" + p[2] + "','" + p[3] + "','" + p[4] + "','" + p[5] + "','" + p[6] + "','" + p[7] + "','" + p[8] + "','" + p[9] + "','" + p[10] + "')";
+                         
+                            Import.CommandText = "INSERT INTO Person (FIO, Email,CategoryID, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10) values (N'" + f + "', N'" + m + "', N'" + Categories.ClickedCategoryID + "', N'" + p[1] + "',N'" + p[2] + "',N'" + p[3] + "',N'" + p[4] + "',N'" + p[5] + "',N'" + p[6] + "',N'" + p[7] + "',N'" + p[8] + "',N'" + p[9] + "',N'" + p[10] + "')";
                             Import.ExecuteScalar();
 
                         }
-                        MessageBox.Show("Импорт выполнен!");
+                      
                         ThisConnection.Close();
                         //перезагрузка таблицы
                         this.personTableAdapter.Fill(this.categoryDataSet.Person, Categories.ClickedCategoryID);
+                        MessageBox.Show("Импорт выполнен!");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Изменения в базе данных выполнить не удалось!",
-                  "Уведомление о результатах", MessageBoxButtons.OK);
-                FileStream f1;//инициализируем файл.
-                string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
-                //получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
-                f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
-                StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
-                sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
-                sw.Close();// завершаем запись
-                f1.Dispose();// освобождаем файл
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Изменения в базе данных выполнить не удалось!",
+            //      "Уведомление о результатах", MessageBoxButtons.OK);
+            //    FileStream f1;//инициализируем файл.
+            //    string path = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("LMASS.exe", "")).LocalPath; //вычисляем путь лог файла (строка)
+            //    получаем директорию, в которой хранится exe файл, адаптируем её название (удаляем название exe и делаем путь логическим).
+            //    f1 = new FileStream(path + "LMASS.log", FileMode.Append);//находим файл лога, если его нет - создаём
+            //    StreamWriter sw = new StreamWriter(f1);//создадим объект StreamWriter для записи данных в файл
+            //    sw.WriteLine(DateTime.Now.ToString() + " : " + ex.ToString());//запишем в лог дату, время и наше сообщение
+            //    sw.Close();// завершаем запись
+            //    f1.Dispose();// освобождаем файл
+            //}
         }
 
         private void GridDataError(object sender, DataGridViewDataErrorEventArgs e)
